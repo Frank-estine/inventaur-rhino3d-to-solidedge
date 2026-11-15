@@ -7,17 +7,22 @@
 - [ ] Review `Docs/RELEASE_READINESS_AUDIT.md` and close every applicable acceptance item.
 - [ ] Confirm the project owner/copyright holder and choose a license for original workflow code. No project-wide license is included until that decision is made.
 - [ ] Review `THIRD_PARTY_NOTICES.md` for CPython/PSF license, psutil BSD license, pywin32 PSF license, McNeel Yak/MIT, self-contained .NET notices and managed dependency licenses.
-- [ ] Confirm redistribution terms for self-contained .NET runtime files, CPython and Python wheels, Interop.SolidEdge and transitive dependencies; retain all required notices.
+- [ ] Confirm redistribution terms for both SolidEdge-MCP upstream projects, self-contained .NET runtime files, CPython/Python wheels, Interop.SolidEdge and transitive dependencies; retain all upstream licences/notices.
 - [ ] Verify the Python runtime payload and offline wheelhouse are included; clean-install the `.venv` without any package index/network access.
 - [ ] Verify `ThirdParty/RhinoAI/LICENSE` accompanies the bundled Rhino MCP Yak package.
 - [x] Run the Python test suite (78 passed), compileall, PowerShell parser and batch BOM checks.
 - [x] Run the extracted beta.3 installer on a clean folder; exit code 0, bundled Python identity, offline dependency installation and both MCP version checks passed.
 - [x] Run the live Rhino 9 / Solid Edge 2026 conversion E2E; 45/45 PAR imports and 27/27 nested assemblies completed; Root.asm has 11/11 direct occurrences verified.
-- [x] Review the generated ZIP manifest, exact archive file list and ZIP SHA-256 sidecar; 2,355 manifest hashes and the sidecar were independently verified.
+- [x] Review the generated ZIP manifest, exact archive file list and ZIP SHA-256 sidecar; 2,358 manifest hashes and the sidecar were independently verified.
 - [ ] Search staged package for usernames, absolute paths, private model names, credentials, live logs, source CAD files and client data.
 - [ ] Confirm no local output under Runs, Logs or `_local` has entered the ZIP.
 - [ ] Verify Rhino MCP setup and Solid Edge template discovery on a second workstation.
 - [ ] Include tested versions and known limitations in release notes.
+
+## Upstream attribution
+
+- [x] Credit Tyler Wagler and SolidEdge-MCP contributors; preserve the original MIT licence and clone provenance under ThirdParty/SolidEdge-MCP.
+- [x] Keep the separate .NET MCP server attribution and MIT licence under ThirdParty/DotNet.
 
 ## Internal source repository status
 

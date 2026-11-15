@@ -47,3 +47,10 @@ Inventaur branding applies to first-party filenames, metadata, installer/launche
 Private repository: https://github.com/Frank-estine/inventaur-rhino3d-to-solidedge
 Branch: main; initial commit: 6ad58bdb5fd137245c99f45dfd0d1c22f8d3abfc
 3,885 files committed; 499 Git LFS paths; remote branch and LFS transfer verified.
+
+
+## Upstream credit and prerequisite documentation
+
+- Tyler Wagler's SolidEdge-MCP Python clone is credited in the README and third-party notices; the original MIT license is retained under ThirdParty/SolidEdge-MCP.
+- The separate .NET MCP control/event server source has its own attribution and MIT license under ThirdParty/DotNet.
+- README prerequisites explicitly cover Rhino/MCPStart/MCPConnect/run_python, Solid Edge 2023+ with COM, and nested block definitions/instances for the assembly hierarchy.

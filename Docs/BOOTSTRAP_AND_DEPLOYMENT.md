@@ -14,10 +14,10 @@ The package is intended to be extracted and bootstrapped as a unit. Do not remov
 | Component | Requirement |
 |---|---|
 | Windows | Windows 10/11 x64 |
-| Rhino | Rhino 8.19+ or Rhino 9 |
-| Solid Edge | Licensed Siemens Solid Edge with COM automation enabled |
+| Rhino | Rhino 8.19+ or Rhino 9; intended saved .3dm open in the active session |
+| Solid Edge | Siemens Solid Edge 2023 or later, installed/licensed, with COM automation registered; Solid Edge 2026 is the verified baseline |
 
-Python 3.13.7 x64, both Python dependency wheels, both Solid Edge MCP servers and the Rhino MCP Yak package are bundled. Git, the .NET SDK/runtime and internet access are not required by recipient bootstrap.
+Python 3.13.7 x64, both Python dependency wheels, both Solid Edge MCP servers and the Rhino MCP Yak package are bundled. Git, the .NET SDK/runtime and internet access are not required by recipient bootstrap. Conversion also requires Rhino to be running with Rhino MCP connected (MCPStart, then MCPConnect) and the client to expose run_python.
 
 ## Installation
 
@@ -54,3 +54,17 @@ For a damaged installation, extract a fresh copy of the complete ZIP, run `INSTA
 ## Verification
 
 The release build runs the Python regression suite and compileall. It checks the archive for the portable Python runtime, offline wheelhouse, both MCP runtimes and Rhino Yak package, validates the embedded file manifest, rejects CAD model data and excludes caches/debug symbols.
+
+
+## Rhino assembly model requirement
+
+Build the assembly structure with Rhino block definitions and nested block instances before conversion:
+
+- The active document's top-level block instances form the root assembly.
+- Parent block definitions containing child block instances represent subassemblies.
+- Leaf block definitions hold reusable part geometry.
+- Repeated components should be repeated instances of the same block definition, with each instance retaining its own placement transform.
+- Block definition names must be unique after case/whitespace normalization, and the nested block-reference graph must be acyclic.
+- Groups alone are not assembly definitions. Do not explode the nested block structure before conversion.
+
+Duplicate normalized names and cyclic block references fail preflight. Geometry placed directly inside an assembly definition is treated as local component geometry; dedicated leaf part blocks are preferred.

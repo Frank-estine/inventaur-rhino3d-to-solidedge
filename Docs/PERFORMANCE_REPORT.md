@@ -26,9 +26,14 @@ RAM/CPU/I/O baselines for a live conversion were not captured during this packag
 
 ## Release archive
 
-The final beta.3 archive was rebuilt and independently verified. Size: 99,904,138 bytes. SHA-256: 425d3cc1dc7fe234d2763cb7a950bd23389e33b4a1b5ca07fc706f0ad2df8604. The sidecar matched independently; 2,355 manifest-listed file hashes and the exact archive entry set were verified.
+Archive packaging was not part of this source/documentation correction. The previously generated local ZIP was not changed in this continuation.
 
 
 ## GitHub source repository
 
 The private GitHub source repository contains 3,885 committed files and 499 Git LFS paths. The remote LFS dry-run found no outstanding uploads; local git lfs fsck passed. Repository: https://github.com/Frank-estine/inventaur-rhino3d-to-solidedge
+
+
+## Upstream notices
+
+The package includes Tyler Wagler's original SolidEdge-MCP MIT license and attribution, plus the separate .NET MCP server MIT license. Both are verified as archive manifest entries.

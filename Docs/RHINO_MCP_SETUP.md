@@ -33,3 +33,10 @@ The workflow discovers the active MCP connection at runtime. Do not hard-code an
 ## Provenance
 
 The bundled Yak package is McNeel's official Rhino MCP Platform 0.4.0 Windows package. Its MIT license and upstream metadata are retained in `ThirdParty\RhinoAI`.
+
+
+## Conversion prerequisite
+
+Keep Rhino open with the intended saved .3dm document active. Run MCPStart, then MCPConnect, and verify that the connected AI/MCP client exposes the document-scoped run_python tool. The installer does not create this live session.
+
+The .3dm must encode the intended assembly hierarchy using nested Rhino block definitions and instances: parent blocks for assemblies/subassemblies and leaf blocks for reusable parts. Groups alone do not create native assembly structure. Block names must be unique after case/whitespace normalization and the hierarchy must not contain cycles.

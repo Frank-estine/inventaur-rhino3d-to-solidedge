@@ -26,12 +26,21 @@ Third-party names, namespaces, original source identities and copyright notices 
 - License: MIT; the full license is included at `ThirdParty/RhinoAI/LICENSE`.
 - The Yak file is bundled and installed locally by `INSTALL.bat` using the Yak executable distributed with Rhino. Supported target is Rhino 8.19+ / Rhino 9.
 
-## Solid Edge MCP upstream and runtime
+## SolidEdge-MCP Python upstream credit
 
-- Project: https://github.com/1337332551-dot/solidedge-mcp-server
-- Integration: compiled Solid Edge MCP control and event applications are bundled under `Scripts/SOLIDEDGE-MCP/runtime/win-x64`.
-- The applications are self-contained .NET 8 Windows x64 builds; no recipient-side .NET SDK/runtime installation or source compilation is required.
-- The upstream project license and required third-party notices are included under `ThirdParty/DotNet` where available. The integration is independent and is not an official Siemens MCP.
+- Project: [tylerwagler/SolidEdge-MCP](https://github.com/tylerwagler/SolidEdge-MCP).
+- Author listed in upstream package metadata: Tyler Wagler.
+- Credit: original Python Solid Edge MCP repository cloned during development of this workflow.
+- License: MIT. The original upstream license is retained without modification at ThirdParty/SolidEdge-MCP/LICENSE; provenance is documented in ThirdParty/SolidEdge-MCP/UPSTREAM.md.
+- The beta.3 offline package does not bundle this repository's Python MCP server source or Python server runtime. The repository is credited as upstream work and is not misrepresented as the source of the separate .NET applications below.
+
+## Bundled .NET Solid Edge MCP control and event servers
+
+- Project: [1337332551-dot/solidedge-mcp-server](https://github.com/1337332551-dot/solidedge-mcp-server).
+- Role: separate source project for the self-contained .NET 8 Windows x64 control and event MCP applications bundled under Scripts/SOLIDEDGE-MCP/runtime/win-x64.
+- License: MIT. The upstream license, including its original copyright notices, is retained at ThirdParty/DotNet/SolidEdge-MCP-Server-LICENSE.txt.
+- This is an independent community implementation and is not an official Siemens MCP server.
+- The Inventaur loopback bridge Python files under Scripts/SOLIDEDGE-MCP are first-party integration code.
 
 ## .NET runtime and managed dependencies
 

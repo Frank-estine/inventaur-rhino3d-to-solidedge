@@ -36,6 +36,12 @@
 - First-party copyright and project-wide licence decision; LICENSE_PENDING.txt remains intentional.
 - Third-party redistribution/licence review before public release or external distribution.
 
+## Upstream credits and operator prerequisites
+
+- Tyler Wagler's SolidEdge-MCP Python repository is credited in README.md and THIRD_PARTY_NOTICES.md; its original MIT licence is preserved under ThirdParty/SolidEdge-MCP.
+- The separate .NET MCP executable source is credited separately under ThirdParty/DotNet with its MIT licence.
+- README prerequisites now specify Rhino open with MCPStart/MCPConnect and run_python, licensed Solid Edge 2023+ with COM, and nested Rhino block definitions/instances for assembly hierarchy.
+
 ## GitHub source state
 
 - Private repository: https://github.com/Frank-estine/inventaur-rhino3d-to-solidedge

@@ -12,6 +12,12 @@ This directory contains the first-party Inventaur Solid Edge MCP bridge used by 
 
 The conversion runner uses this local bridge directly. It does not require a separate Inventaur orchestration service, hosted cloud API, API key or account sign-in.
 
+## Upstream acknowledgement
+
+- **Original Python MCP project:** Tyler Wagler's [SolidEdge-MCP](https://github.com/tylerwagler/SolidEdge-MCP), MIT. This is the original Python repository cloned during development; its license and provenance are retained in ThirdParty/SolidEdge-MCP.
+- **Bundled control/event executables:** the separate .NET project [solidedge-mcp-server](https://github.com/1337332551-dot/solidedge-mcp-server), MIT. Its license and managed dependency notices are retained in ThirdParty/DotNet.
+- The Inventaur loopback bridge files in this directory are first-party integration code. The Python and .NET upstreams are distinct projects.
+
 ## Security boundaries
 
 - The bridge binds to `127.0.0.1` only.

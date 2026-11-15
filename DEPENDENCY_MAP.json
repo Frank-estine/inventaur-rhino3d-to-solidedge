@@ -139,7 +139,27 @@
                                                      "inventaur_bridge_daemon.py",
                                                      "inventaur_process_policy.py"
                                                  ],
-                              "upstream":  "Pinned upstream Solid Edge MCP project used to produce the bundled binaries; recipient-side source download/build is not required.",
+                              "python_upstream_reference":  {
+                                                                  "project":  "SolidEdge-MCP",
+                                                                  "repository":  "https://github.com/tylerwagler/SolidEdge-MCP",
+                                                                  "author":  "Tyler Wagler",
+                                                                  "license":  "MIT",
+                                                                  "license_file":  "ThirdParty/SolidEdge-MCP/LICENSE",
+                                                                  "role":  "Original Python MCP repository cloned and acknowledged during development",
+                                                                  "bundled_python_server":  false,
+                                                                  "upstream_master_snapshot":  "49384d030c087c643ca3332eb2134bffe393e84c"
+                                                              },
+                              "bundled_dotnet_runtime_source":  {
+                                                                   "project":  "solidedge-mcp-server",
+                                                                   "repository":  "https://github.com/1337332551-dot/solidedge-mcp-server",
+                                                                   "license":  "MIT",
+                                                                   "license_file":  "ThirdParty/DotNet/SolidEdge-MCP-Server-LICENSE.txt",
+                                                                   "binaries":  [
+                                                                                    "Scripts/SOLIDEDGE-MCP/runtime/win-x64/control/solidedge-mcp.exe",
+                                                                                    "Scripts/SOLIDEDGE-MCP/runtime/win-x64/events/solidedge-event-mcp.exe"
+                                                                                ]
+                                                               },
+                              "upstream":  "The Tyler Wagler Python SolidEdge-MCP clone is acknowledged separately from the source of the bundled .NET control/event servers. See ThirdParty/SolidEdge-MCP and ThirdParty/DotNet.",
                               "network":  "127.0.0.1 only",
                               "authentication":  "Per-run random token on a local custom header",
                               "isolation":  "Dedicated run-scoped LOCALAPPDATA profile and bridge-owned Solid Edge process",

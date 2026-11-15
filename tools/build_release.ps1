@@ -136,6 +136,9 @@ try {
         "$PackageName/Scripts/SOLIDEDGE-MCP/runtime/win-x64/control/coreclr.dll",
         "$PackageName/Scripts/SOLIDEDGE-MCP/runtime/win-x64/events/coreclr.dll",
         "$PackageName/ThirdParty/RhinoAI/rhino-mcp-platform-0.4.0-rh8_19-win.yak",
+        "$PackageName/ThirdParty/SolidEdge-MCP/LICENSE",
+        "$PackageName/ThirdParty/SolidEdge-MCP/UPSTREAM.md",
+        "$PackageName/ThirdParty/DotNet/SolidEdge-MCP-Server-LICENSE.txt",
         "$PackageName/Docs/BOOTSTRAP_AND_DEPLOYMENT.md"
     )
     foreach ($item in $required) { if ($item -notin $names) { throw "Required bootstrap archive entry missing: $item" } }

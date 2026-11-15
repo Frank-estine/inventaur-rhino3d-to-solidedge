@@ -27,6 +27,12 @@
 - [ ] Review redistribution terms for CPython, wheels, self-contained .NET runtime files, Interop.SolidEdge and transitive dependencies.
 - [ ] Keep the repository private until licensing and redistribution review is complete.
 
+## Upstream credits
+
+- Tyler Wagler and SolidEdge-MCP contributors are credited in the root README and THIRD_PARTY_NOTICES.md; the original MIT licence is retained byte-for-byte under ThirdParty/SolidEdge-MCP.
+- The separate .NET MCP server source and its MIT licence are credited under ThirdParty/DotNet.
+- The README now documents Rhino/MCP live-session prerequisites, Solid Edge 2023+ and the required nested-block assembly structure.
+
 ## GitHub source publication
 
 - Private repository: https://github.com/Frank-estine/inventaur-rhino3d-to-solidedge
