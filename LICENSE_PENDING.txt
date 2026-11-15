@@ -1,0 +1,15 @@
+> INVENTAUR INC. — BY KRISHNA PARMAR
+
+NO PROJECT-WIDE LICENSE HAS BEEN GRANTED
+
+The original Rhino3D-to-Solid-Edge workflow code is not currently distributed
+under an open-source license. Copyright remains with its respective owner(s).
+Viewing, downloading, or sharing this package does not by itself grant rights
+to modify, redistribute, or commercially use the original workflow code.
+
+The vendored upstream component has its own license and notices; see
+THIRD_PARTY_NOTICES.md and Scripts/SOLIDEDGE-MCP/upstream/LICENSE.
+
+Before describing this project as open source, the project owner must choose
+and add a root-level license after reviewing all contributions and third-party
+dependencies.

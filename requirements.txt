@@ -1,0 +1,3 @@
+# Inventaur custom Python runtime dependencies.
+psutil>=5.9.8,<8
+pywin32>=306; platform_system == "Windows"

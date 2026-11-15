@@ -1,0 +1,6 @@
+﻿__pycache__/
+*.py[cod]
+/upstream/**/bin/
+/upstream/**/obj/
+/upstream/**/.vs/
+/upstream/**/TestResults/

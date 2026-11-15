@@ -1,0 +1,190 @@
+{
+    "schema_version":  6,
+    "workflow_id":  "inventaur-rhino3d-to-solidedge",
+    "description":  "Inventaur Inc. full offline bootstrap distribution: bundled CPython/wheels, self-contained Solid Edge MCP runtimes and Rhino MCP Yak package for deterministic Rhino 3DM to native Solid Edge parts/assemblies.",
+    "external_requirements":  [
+                                  {
+                                      "name":  "Microsoft Windows",
+                                      "purpose":  "Host platform for Rhino, Solid Edge COM automation and bundled self-contained MCP/Python runtimes.",
+                                      "verified_baseline":  "Windows 11 workstation"
+                                  },
+                                  {
+                                      "name":  "Rhino 3D",
+                                      "purpose":  "Source model, RhinoCommon document access and STEP export.",
+                                      "verified_baseline":  "Rhino 9"
+                                  },
+                                  {
+                                      "name":  "Rhino MCP plugin",
+                                      "purpose":  "Must expose the document-scoped run_python tool.",
+                                      "required":  true,
+                                      "distribution":  "Bundled McNeel Rhino-MCP-Platform 0.4.0 Yak package installed locally by INSTALL.bat."
+                                  },
+                                  {
+                                      "name":  "Siemens Solid Edge",
+                                      "purpose":  "Native PAR/ASM creation and verification through Windows COM automation.",
+                                      "verified_baseline":  "Solid Edge 2026"
+                                  },
+                                  {
+                                      "name":  "Solid Edge ISO Metric Part template",
+                                      "purpose":  "Seed native part documents. Auto-discovered under Program Files or explicitly configured.",
+                                      "override":  "CAD_SOLID_EDGE_PART_TEMPLATE"
+                                  }
+                              ],
+    "workflow_stages":  [
+                            {
+                                "id":  "source_preflight_and_snapshot",
+                                "entry":  "Scripts/inventaur_run_rhino3d_to_solidedge.py",
+                                "inputs":  [
+                                               "Exact saved 3DM path",
+                                               "Already-open Rhino document",
+                                               "Document-scoped MCP listener"
+                                           ],
+                                "outputs":  [
+                                                "Run-local immutable 3DM snapshot",
+                                                "Source and snapshot SHA-256",
+                                                "Semantic readback report"
+                                            ],
+                                "critical_rules":  [
+                                                       "Do not save or alter the user\u0027s live Rhino document",
+                                                       "Verify path and runtime identity"
+                                                   ]
+                            },
+                            {
+                                "id":  "block_colour_and_inventory",
+                                "entries":  [
+                                                "Scripts/inventaur_colorize_rhino_unique_blocks_v2.py",
+                                                "Scripts/inventaur_build_rhino_inventory.py"
+                                            ],
+                                "inputs":  [
+                                               "Immutable snapshot"
+                                           ],
+                                "outputs":  [
+                                                "Derived colourized 3DM",
+                                                "Definition and occurrence inventory",
+                                                "Transforms and object attributes"
+                                            ]
+                            },
+                            {
+                                "id":  "identity_manifest",
+                                "entry":  "Scripts/inventaur_build_identity_manifest.py",
+                                "inputs":  [
+                                               "Rhino inventory",
+                                               "Colour report"
+                                           ],
+                                "outputs":  [
+                                                "Reusable definition-to-PAR/ASM mapping"
+                                            ]
+                            },
+                            {
+                                "id":  "step_export",
+                                "entry":  "Scripts/inventaur_export_named_block_geometry_to_step_rhino.py",
+                                "inputs":  [
+                                               "Colourized model",
+                                               "Identity manifest"
+                                           ],
+                                "outputs":  [
+                                                "STEP files",
+                                                "Export/readback/hash report"
+                                            ]
+                            },
+                            {
+                                "id":  "native_part_import",
+                                "entry":  "Scripts/inventaur_import_step_parts_native_v2.py",
+                                "inputs":  [
+                                               "Verified STEP files",
+                                               "Identity manifest",
+                                               "Solid Edge MCP bridge"
+                                           ],
+                                "outputs":  [
+                                                "Native PAR files",
+                                                "Save/close/reopen and topology diagnostics"
+                                            ]
+                            },
+                            {
+                                "id":  "assembly_build",
+                                "entry":  "Scripts/inventaur_build_nested_assembly_tree.py",
+                                "inputs":  [
+                                               "Rhino occurrence transforms",
+                                               "Verified native PAR/ASM files"
+                                           ],
+                                "outputs":  [
+                                                "Nested assemblies",
+                                                "Root.asm",
+                                                "Occurrence and transform verification"
+                                            ]
+                            },
+                            {
+                                "id":  "optional_geometry_repair",
+                                "entries":  [
+                                                "Scripts/inventaur_join_lowest_block_breps_v2.py",
+                                                "Scripts/inventaur_repair_breps_for_step_v1.py"
+                                            ],
+                                "inputs":  [
+                                               "Run-owned Rhino model copy"
+                                           ],
+                                "outputs":  [
+                                                "Separate derived 3DM and repair report"
+                                            ],
+                                "critical_rules":  [
+                                                       "Not part of the default production stage sequence",
+                                                       "Never overwrite original source",
+                                                       "Require human review for destructive/topology-changing operations"
+                                                   ]
+                            }
+                        ],
+    "solid_edge_bridge":  {
+                              "root":  "Scripts/SOLIDEDGE-MCP",
+                              "python_modules":  [
+                                                     "inventaur_bridge_client.py",
+                                                     "inventaur_bridge_daemon.py",
+                                                     "inventaur_process_policy.py"
+                                                 ],
+                              "upstream":  "Pinned upstream Solid Edge MCP project used to produce the bundled binaries; recipient-side source download/build is not required.",
+                              "network":  "127.0.0.1 only",
+                              "authentication":  "Per-run random token on a local custom header",
+                              "isolation":  "Dedicated run-scoped LOCALAPPDATA profile and bridge-owned Solid Edge process",
+                              "arbitrary_script_execution":  "Disabled",
+                              "runtime":  {
+                                              "framework":  "net8.0-windows",
+                                              "self_contained":  true,
+                                              "distribution":  "Bundled under Scripts/SOLIDEDGE-MCP/runtime/win-x64/control and events, including the private .NET 8 runtime. No global .NET runtime or SDK is required."
+                                          }
+                          },
+    "verification_contracts":  [
+                                   "Snapshot is reopened and semantically compared before conversion.",
+                                   "STEP exports are source-bound and hashed.",
+                                   "Native PAR documents are saved, closed, reopened and hash-verified.",
+                                   "Nested/root ASM documents are saved, closed, reopened and occurrence/transform-verified.",
+                                   "Mutating COM calls with unknown outcomes are reconciled before retry."
+                               ],
+    "not_claimed":  [
+                        "Universal compatibility with all Rhino or Solid Edge versions.",
+                        "Automatic repair of all invalid, open or non-solid geometry.",
+                        "Visual viewport sign-off from file/hash checks alone.",
+                        "A watertight solid merely because an imported native file reopened successfully.",
+                        "Rhino and Solid Edge remain separately licensed host applications; no universal version compatibility is claimed."
+                    ],
+    "package_payload":  {
+                            "solid_edge_mcp_runtime":  "Self-contained Windows x64 control and event MCP applications",
+                            "rhino_mcp_yak":  "ThirdParty/RhinoAI/rhino-mcp-platform-0.4.0-rh8_19-win.yak",
+                            "legacy_launcher":  "Scripts/Rhino3D_to_SolidEdge.bat",
+                            "git_required":  false,
+                            "dotnet_sdk_required":  false,
+                            "dotnet_runtime_required":  false,
+                            "python_runtime":  "Runtime/Python (CPython 3.13.7 x64)",
+                            "python_wheels":  "Runtime/Wheels (psutil 7.2.2 and pywin32 312)",
+                            "python_required_external":  false
+                        },
+    "bundled_python":  {
+                           "implementation":  "CPython",
+                           "version":  "3.13.7",
+                           "architecture":  "win_amd64",
+                           "root":  "Runtime/Python",
+                           "wheelhouse":  "Runtime/Wheels",
+                           "dependencies":  [
+                                                "psutil 7.2.2",
+                                                "pywin32 312"
+                                            ],
+                           "installation":  "Offline wheelhouse into package-local .venv; no system Python or package-index access required."
+                       }
+}
