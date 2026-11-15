@@ -60,9 +60,7 @@ The installer prepares the local runtime; it does not open Rhino, open a model o
 
 ## Rhino3D reusable scripts
 
-`Rhino3D_Scripts/Inventaur_Rhino_Standards/` contains the reusable Inventaur Rhino 9 standards scripts, automatic layer routing, annotation routing, hatch/PAT library and metric drafting template. It is kept separate from project-specific modeling scripts.
-
-The hatch installer imports the PAT definitions directly into the active Rhino document; see that folder's README for the import path and maintenance notes.
+Rhino3D_Scripts/README.md is the index for reusable Rhino3D scripts. It links to the AutoLayer startup entrypoint, Rhino Standards installer, metric template, hatch library and preserved legacy router. Each component has its own folder and README. Project-specific modelling scripts are kept out of this reusable package.
 
 ## Install
 

@@ -1,8 +1,8 @@
 # Rhino startup entrypoint. Configured in Rhino General Options > StartupCommands.
-# Inventaur Rhino Standards 1.3.1 + RhinoAI MCP autostart.
+# Inventaur Rhino Standards 1.3.2 + RhinoAI MCP autostart.
 import Rhino, traceback, os, codecs
 
-_INV_INSTALLER_PATH = r"C:\Users\krish\Documents\Inventaur\Rhino Standards\Inventaur_RhinoStandards_Install.py"
+_INV_INSTALLER_PATH = os.path.join(os.path.expanduser("~"), "Documents", "Inventaur", "Rhino Standards", "Inventaur_RhinoStandards_Install.py")
 def _inv_ensure_directory(path):
     """Create a directory on both IronPython 2.7 and CPython 3."""
     if os.path.isdir(path):
@@ -32,7 +32,7 @@ try:
     with codecs.open(_INV_INSTALLER_PATH, "r", "utf-8") as stream:
         _inv_installer_source = stream.read()
     eval(compile(_inv_installer_source, _INV_INSTALLER_PATH, "exec"), globals(), globals())
-    _inv_bootstrap_log("STANDARDS_BOOTSTRAP_OK version=1.3.1")
+    _inv_bootstrap_log("STANDARDS_BOOTSTRAP_OK version=1.3.2")
 except Exception:
     _inv_bootstrap_log("STANDARDS_BOOTSTRAP_ERROR\n" + traceback.format_exc())
 

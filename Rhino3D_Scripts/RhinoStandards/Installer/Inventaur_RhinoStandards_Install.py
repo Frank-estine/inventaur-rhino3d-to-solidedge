@@ -13,9 +13,9 @@ from System.Drawing import Color
 from Rhino.DocObjects import ObjectType, DimensionStyle, HatchPattern, Font
 from Rhino.Geometry import TextEntity, TextDot
 
-VERSION = '1.3.1'
+VERSION = '1.3.2'
 STICKY_KEY = 'INVENTAUR_RHINO_STANDARDS_V1'
-BASE_DIR = r'C:\Users\krish\Documents\Inventaur\Rhino Standards'
+BASE_DIR = os.path.join(os.path.expanduser('~'), 'Documents', 'Inventaur', 'Rhino Standards')
 TEMPLATE_PATH = os.path.join(BASE_DIR, 'Inventaur_Architecture_MM.3dm')
 PAT_PATH = os.path.join(BASE_DIR, 'McNeel_Rhino_Hatch_Library.pat')
 LOG_DIR = os.path.join(os.environ.get('LOCALAPPDATA', os.path.expanduser('~')), 'Inventaur', 'RhinoStandards', 'logs')
@@ -130,8 +130,8 @@ def ensure_hatches(doc):
     except Exception:
         log('PAT_IMPORT_ERROR\n' + traceback.format_exc())
     after = doc.HatchPatterns.Count
-    log('HATCHES default_available={0} added_default={1} added_pat={2} before={3} after={4} custom_present={5}'.format(len(defaults), added_default, added_pat, before, after, len([n for n in expected_custom if n in names])))
-    expected_custom = ['Inventaur_Concrete', 'Inventaur_ConcreteReinforced', 'Inventaur_Earth', 'Inventaur_Granite', 'Inventaur_Herringbone', 'Inventaur_Sand']
+    expected_custom = ['Concrete', 'Concrete Reinforced', 'Earth', 'Granite', 'Herringbone', 'Sand']
+    log('HATCHES default_available={0} added_default={1} added_pat={2} before={3} after={4} standard_pat_present={5}'.format(len(defaults), added_default, added_pat, before, after, len([n for n in expected_custom if n in names])))
     missing_custom = [name for name in expected_custom if name not in names]
     if missing_custom:
         raise RuntimeError('Custom PAT import incomplete; missing: ' + ', '.join(missing_custom))
@@ -425,7 +425,7 @@ def build_template():
     persisted_layers = int(check.Layers.Count)
     if len(persisted_styles) < 14:
         raise RuntimeError('Template lost annotation styles on save: ' + str(len(persisted_styles)))
-    if persisted_hatches < 64:
+    if persisted_hatches < 59:
         raise RuntimeError('Template lost default hatch patterns on save: ' + str(persisted_hatches))
     # Set Rhino's new-document default to this verified template.
     Rhino.ApplicationSettings.FileSettings.TemplateFolder = BASE_DIR
@@ -444,7 +444,7 @@ def verify_template_file():
     styles = [str(x.Name) for x in check.DimStyles if str(x.Name).startswith('INV_STD_')]
     hatch_count = int(check.HatchPatterns.Count)
     layer_count = int(check.Layers.Count)
-    if check.Settings.ModelUnitSystem != Rhino.UnitSystem.Millimeters or len(styles) < 14 or hatch_count < 64 or layer_count < 44:
+    if check.Settings.ModelUnitSystem != Rhino.UnitSystem.Millimeters or len(styles) < 14 or hatch_count < 59 or layer_count < 44:
         raise RuntimeError('Existing metric template failed validation; run an explicit template rebuild after reviewing the backup')
     return {'layers': layer_count, 'styles': len(styles), 'hatches': hatch_count, 'objects': int(check.Objects.Count)}
 

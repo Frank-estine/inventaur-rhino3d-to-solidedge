@@ -1,0 +1,15 @@
+{
+  "status": "STRUCTURE_AND_FULL_PAT_VERIFIED",
+  "canonical_package": "F:\\ai\\BOT\\AUTOMATIONS\\CAD\\rhino3d_automations\\Rhino3D_Scripts",
+  "github_repository": "F:\\ai\\BOT\\AUTOMATIONS\\CAD\\Rhino3D_to_SolidEdge_Workflow",
+  "archived_previous_source": "F:\\ai\\BOT\\AUTOMATIONS\\CAD\\rhino3d_automations\\archive\\rhino_standards_pre_structure_20261115",
+  "runtime_mirror": "C:\\Users\\krish\\Documents\\Inventaur\\Rhino Standards",
+  "version": "1.3.2",
+  "pattern_definitions": 59,
+  "pattern_names_unique": true,
+  "inventaur_prefixed_hatch_names": 0,
+  "pat_document_import": "PASS; 59 names present, zero missing, zero document-object count change",
+  "headless_installer": "PASS; 44 layers, 14 styles, 59 hatches, zero objects",
+  "live_rhino": "1.3.2 event handlers installed; standards applied; template reused",
+  "cold_restart": "PENDING; active Rhino process intentionally left open"
+}

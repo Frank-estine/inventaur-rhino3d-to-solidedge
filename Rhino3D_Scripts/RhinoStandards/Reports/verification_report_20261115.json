@@ -1,0 +1,229 @@
+{
+  "product": "Inventaur Rhino 9 Drafting Standards",
+  "version": "1.2.2",
+  "verified_at_local": "2026-11-15",
+  "rhino_version": "9.0.26300.9401",
+  "verification_level": "live RhinoCommon + fresh headless template open + three real object-routing tests + non-mm unit-preservation regression",
+  "template": {
+    "path": "C:\\Users\\krish\\Documents\\Inventaur\\Rhino Standards\\Inventaur_Architecture_MM.3dm",
+    "units": "Millimeters",
+    "layers": 44,
+    "inventaur_styles": 14,
+    "total_styles": 15,
+    "hatch_patterns": 59,
+    "default_hatch_patterns": 58,
+    "extra_pat_patterns": 1,
+    "objects": 0,
+    "current_dimension_style": "INV_STD_MM",
+    "current_layer": "04_ARCHITECTURE::GENERAL",
+    "fresh_headless_open": "PASS"
+  },
+  "live_document": {
+    "name": "test.3dm",
+    "path": "C:\\Users\\krish\\Desktop\\rhino3d to solidedge tries\\GLASSCASE_UNIQUE_BLOCKS_STEP_20261111\\test.3dm",
+    "layers": 49,
+    "inventaur_styles": 14,
+    "total_styles": 15,
+    "hatch_patterns": 59,
+    "current_dimension_style": "INV_STD_MM",
+    "enumerated_active_objects_before_test": 16,
+    "enumerated_active_objects_after_cleanup": 16,
+    "saved_over_original": false,
+    "current_layer_before": "Default",
+    "current_layer_after": "04_ARCHITECTURE::GENERAL",
+    "geometry_mutation": "none; existing 414 Rhino object-table entries retained, enumerated active object count 16; standards metadata added in memory only; model units/tolerances preserved"
+  },
+  "routing_tests": {
+    "TextEntity": "TEXT",
+    "LinearDimension": "ANNOTATIONS",
+    "Herringbone Hatch": "HATCH",
+    "all_passed": true,
+    "test_objects_deleted": true
+  },
+  "startup": {
+    "entrypoint": "C:\\Users\\krish\\Documents\\Inventaur\\Rhino Standards\\Inventaur_RhinoAutoLayer.py",
+    "configured_value": "_-RunPythonScript \"C:\\Users\\krish\\Documents\\Inventaur\\Rhino Standards\\Inventaur_RhinoAutoLayer.py\"",
+    "setting_location": "Rhino 9 General Options / StartupCommands",
+    "startup_command_readback": "PASS",
+    "current_session_handlers": "1.2.1 ACTIVE",
+    "mcp_status": "REACHABLE_127.0.0.1:10500",
+    "cold_process_restart": "PENDING_AFTER_1_2_2_COMPATIBILITY_PATCH; existing Rhino processes were left running",
+    "next_check": "At next normal Rhino restart, verify startup execution from logs and test New command; check MCPStatus",
+    "last_rhino_process_created_local": "2026-11-15T02:38:23",
+    "startup_preferences_last_modified_local": "2026-11-15T02:38:31",
+    "interpretation": "The observed process began before the preferences XML was last saved; the restart likely preceded persistence of the startup command. Exact entrypoint has since been executed successfully and MCPStart/MCPStatus confirmed. A process restart after this exact entrypoint fix remains pending."
+  },
+  "hatch_file_install": "C:\\Users\\krish\\AppData\\Roaming\\McNeel\\Rhinoceros\\9.0\\Localization\\en-US\\Hatch Patterns\\Inventaur_McNeel_Hatch_Library.pat",
+  "backups": [
+    {
+      "path": "C:\\Users\\krish\\Desktop\\rhino3d to solidedge tries\\GLASSCASE_UNIQUE_BLOCKS_STEP_20261111\\test_before_Inventaur_RhinoStandards_20261115.3dm",
+      "type": "Rhino in-memory WriteFile backup",
+      "size_bytes": 8399537
+    },
+    {
+      "path": "C:\\Users\\krish\\Desktop\\rhino3d to solidedge tries\\GLASSCASE_UNIQUE_BLOCKS_STEP_20261111\\test_before_Inventaur_RhinoStandards_diskcopy_20261115.3dm",
+      "type": "byte-identical disk copy",
+      "size_bytes": 7382789,
+      "sha256": "35acfff47e71a2c8e77d2d9be11f7bdd7b343ab21f89da04c45b0f961d2b9815"
+    }
+  ],
+  "installer": {
+    "version": "1.2.2",
+    "path": "C:\\Users\\krish\\Documents\\Inventaur\\Rhino Standards\\Inventaur_RhinoStandards_Install.py",
+    "sha256": "c39a1358e13df33d3ec0aba845aedb15a13c01767fd6190e20ae53a43b203cdf",
+    "python_syntax": "PASS",
+    "startup_template_policy": "validate and reuse; no automatic rebuild/replace if a valid template exists",
+    "existing_document_policy": "preserve model/page units and tolerances; select unit-compatible style only if Rhino built-in default style is active"
+  },
+  "unit_preservation_test": {
+    "document_units_before": "Inches",
+    "document_units_after": "Inches",
+    "geometry": "10-inch LineCurve",
+    "length_before": 10.0,
+    "length_after": 10.0,
+    "current_dimension_style": "INV_STD_IN_DEC",
+    "result": "PASS",
+    "test_document_disposed": true
+  },
+  "cleanup": {
+    "runtime_and_canonical_package_files": 10,
+    "runtime_and_canonical_hashes_match": true,
+    "temporary_probe_files_removed": true,
+    "intentional_rollback_assets": [
+      "Inventaur_Architecture_MM.3dm.previous",
+      "Inventaur_RhinoAutoLayer_legacy_1_0.py"
+    ],
+    "pre_edit_catalogue_snapshots_moved_to": "F:\\ai\\BOT\\AUTOMATIONS\\state\\backups\\rhino_standards_20261115",
+    "source_model_backups_retained": true
+  },
+  "runtime_retest_1_2_1": {
+    "handler_version_readback": "1.2.1",
+    "live_document": "test.3dm",
+    "text_layer": "TEXT",
+    "linear_dimension_layer": "ANNOTATIONS",
+    "herringbone_hatch_layer": "HATCH",
+    "all_routing_assertions_passed": true,
+    "enumerated_object_count_before": 16,
+    "enumerated_object_count_after_cleanup": 16,
+    "cleanup_passed": true,
+    "live_units": "Millimeters",
+    "live_layers": 49,
+    "live_total_dimstyles": 15,
+    "live_hatch_patterns": 59,
+    "current_dimension_style": "INV_STD_MM",
+    "current_layer": "04_ARCHITECTURE::GENERAL",
+    "rhino_mcp_endpoint": "http://localhost:10500/",
+    "rhino_mcp_status": "REACHABLE"
+  },
+  "automation_catalogue": {
+    "automation_id": "cad_rhino_standards",
+    "status": "IMPLEMENTED_VERIFIED",
+    "local_todo": "CAD/Rhino_Standards/TODO.md",
+    "catalogue_integrity": "ok",
+    "refresh_log": "F:\\ai\\BOT\\AUTOMATIONS\\state\\rhino_standards_catalogue_refresh_v121_20261115.log"
+  },
+  "startup_entrypoint_fix": {
+    "root_cause": "Installer defines log() in the shared exec globals, shadowing the startup wrapper log file path variable named log; error handler then raised TypeError before reaching MCPStart.",
+    "fix": "Use _INV_BOOTSTRAP_LOG_PATH and _inv_bootstrap_log helper; keep MCPStart in separate exception block.",
+    "entrypoint_path": "C:\\Users\\krish\\Documents\\Inventaur\\Rhino Standards\\Inventaur_RhinoAutoLayer.py",
+    "entrypoint_sha256": "1ecbe3441300b67a3ffafff56557e04c6ab9cb53f11613fd512bcb2376173c7a",
+    "python_syntax": "PASS",
+    "executed_exact_entrypoint_in_current_restarted_process": true,
+    "bootstrap_log": "C:\\Users\\krish\\AppData\\Local\\Inventaur\\RhinoStandards\\logs\\Inventaur_RhinoBootstrap.log",
+    "bootstrap_log_evidence": [
+      "STANDARDS_BOOTSTRAP_OK version=1.2.1",
+      "MCPSTART_RUNSCRIPT_RETURN=True"
+    ],
+    "mcp_endpoint_after_entrypoint": "REACHABLE http://localhost:10500/",
+    "live_handler_version": "1.2.1",
+    "post_patch_cold_restart": "PENDING_NEXT_NORMAL_RHINO_RESTART",
+    "MCPStatus_command_output": "[RhinoAI] MCP server running on http://localhost:10500/",
+    "MCPStatus_result": "PASS",
+    "bootstrap_log_tail": [
+      "STANDARDS_BOOTSTRAP_OK version=1.2.1",
+      "STANDARDS_BOOTSTRAP_OK version=1.2.1",
+      "MCPSTART_RUNSCRIPT_RETURN=True"
+    ],
+    "startup_preference_readback": "_-RunPythonScript \"C:\\Users\\krish\\Documents\\Inventaur\\Rhino Standards\\Inventaur_RhinoAutoLayer.py\"",
+    "MCPStart_repeat_call": "RunScript returned False on a repeated call while MCP remained healthy; `_MCPStatus` continued to report server running. Treat this as already-running/idempotent behavior, not a startup failure.",
+    "verified_log_tail": [
+      "STANDARDS_BOOTSTRAP_OK version=1.2.1",
+      "STANDARDS_BOOTSTRAP_OK version=1.2.1",
+      "MCPSTART_RUNSCRIPT_RETURN=True",
+      "MCPSTART_RUNSCRIPT_RETURN=False"
+    ],
+    "MCPStatus_repeat_output": "[RhinoAI] MCP server running on http://localhost:10500/"
+  },
+  "runtime_compatibility_patch_1_2_2": {
+    "user_reported_error": "makedirs() got an unexpected keyword argument 'exist_ok'",
+    "reported_source": "Inventaur_RhinoAutoLayer.py line 10",
+    "modified_files": [
+      "Inventaur_RhinoAutoLayer.py",
+      "Inventaur_RhinoStandards_Install.py"
+    ],
+    "changes": [
+      "directory creation no longer passes exist_ok",
+      "encoded I/O uses codecs.open",
+      "installer timestamp uses strftime",
+      "template rename uses os.rename after explicit backup cleanup",
+      "installer executes in the entrypoint shared namespace with eval(compile(..., exec), globals, globals)"
+    ],
+    "source_checks": {
+      "python_3_12_compile": "PASS",
+      "entrypoint_exist_ok_keyword": "ABSENT",
+      "installer_exist_ok_keyword_argument": "ABSENT",
+      "os_replace_calls": "ABSENT",
+      "built_in_open_encoding_calls": "ABSENT",
+      "runtime_and_canonical_script_hashes_match": true
+    },
+    "backup_dir": "F:\\ai\\BOT\\AUTOMATIONS\\state\\backups\\rhino_standards_compat_1_2_2_20261115",
+    "live_rhino_command_test": {
+      "status": "INSTALLER_PASS_BOOTSTRAP_PARTIAL",
+      "invocation": "_-RunPythonScript \"C:\\Users\\krish\\Documents\\Inventaur\\Rhino Standards\\Inventaur_RhinoAutoLayer.py\"",
+      "session_document": "test.3dm (separate Rhino process; not the affected architectural-model process)",
+      "installer_log_evidence": [
+        "EVENT_HANDLERS_INSTALLED version=1.2.2",
+        "HATCHES default_available=59 added_default=0 added_pat=0 before=59 after=59",
+        "DIMSTYLES count=14 current=INV_STD_MM persistent=14",
+        "APPLIED objects=408 layers=49 styles=14 hatches=59 routed_existing=0",
+        "TEMPLATE_REUSED_READBACK_OK layers=44 styles=14 hatches=59 objects=0"
+      ],
+      "post_run_readback": {
+        "document": "test.3dm",
+        "object_table_count": 408,
+        "layers": 49,
+        "dimstyles_total": 15,
+        "hatches": 59,
+        "units": "Millimeters",
+        "current_layer": "04_ARCHITECTURE::GENERAL",
+        "current_style": "INV_STD_MM"
+      },
+      "mcp_after_run": "existing port 10500 responded to JSON-RPC get_context",
+      "limitation": "The run_command HTTP request timed out before the bootstrap log recorded MCPSTART_RUNSCRIPT_RETURN. The existing listener stayed responsive. No second command replay was made.",
+      "other_rhino_processes": "left running and untouched"
+    },
+    "affected_user_model_process_restart": "NOT_PERFORMED; preserve open model state"
+  },
+  "package_files": {
+    "Inventaur_RhinoAutoLayer.py": {
+      "size_bytes": 1918,
+      "sha256": "b347cc2dc620d33dc285049764a54faddec3056a220888bfe3f9f3e9ffa7bc19"
+    },
+    "Inventaur_RhinoStandards_Install.py": {
+      "size_bytes": 20385,
+      "sha256": "c39a1358e13df33d3ec0aba845aedb15a13c01767fd6190e20ae53a43b203cdf"
+    },
+    "README.md": {
+      "size_bytes": 8543,
+      "sha256": "dbf11fba9206db5e6695ad292ea7b1615ae1198b809b1c0facc8b04fbea8aff0"
+    },
+    "TODO.md": {
+      "size_bytes": 5903,
+      "sha256": "2b18e2c471ba01c413c2bd76a999e0239d4c1ca0d7e86dfbeb5919da7417d0fa"
+    },
+    "manifest.json": {
+      "size_bytes": 2833,
+      "sha256": "44ffbdfee76d93e1d530d18123f69beb1e3cefadb6c1d64cad73daedf5e37cf2"
+    }
+  }
+}
