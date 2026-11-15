@@ -58,6 +58,12 @@ The installer prepares the local runtime; it does not open Rhino, open a model o
 6. In the connected AI/MCP client, confirm that the active Rhino connection exposes the document-scoped run_python tool.
 7. Keep Rhino, the MCP connection and the intended document open for the complete conversion.
 
+## Rhino3D reusable scripts
+
+`Rhino3D_Scripts/Inventaur_Rhino_Standards/` contains the reusable Inventaur Rhino 9 standards scripts, automatic layer routing, annotation routing, hatch/PAT library and metric drafting template. It is kept separate from project-specific modeling scripts.
+
+The hatch installer imports the PAT definitions directly into the active Rhino document; see that folder's README for the import path and maintenance notes.
+
 ## Install
 
 Extract the complete ZIP, then run `INSTALL.bat` once.
