@@ -33,7 +33,7 @@
 
 - Human visual inspection of representative part geometry, assembly placement and annotation output.
 - Optional second-workstation installation/run.
-- First-party copyright and project-wide licence decision; LICENSE_PENDING.txt remains intentional.
+- No first-party root licence file added at the project owner's direction; third-party licences and credits remain intact.
 - Third-party redistribution/licence review before public release or external distribution.
 
 ## Upstream credits and operator prerequisites

@@ -23,7 +23,7 @@
 
 - [ ] Complete human visual viewport review of representative parts and assemblies.
 - [ ] Optional: validate installation and run on a second workstation.
-- [ ] Confirm first-party source copyright holder and choose a project-wide licence; LICENSE_PENDING.txt remains intentional.
+- [x] No first-party root licence file added at the project owner's direction; the repository is not represented as open-source. Third-party licences and credits are preserved.
 - [ ] Review redistribution terms for CPython, wheels, self-contained .NET runtime files, Interop.SolidEdge and transitive dependencies.
 - [ ] Keep the repository private until licensing and redistribution review is complete.
 

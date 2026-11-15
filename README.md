@@ -98,9 +98,9 @@ See `Docs/BOOTSTRAP_AND_DEPLOYMENT.md`, `Docs/RHINO_MCP_SETUP.md`, `Docs/OPERATO
 
 ## Credits
 
-- **Tyler Wagler** — [SolidEdge-MCP](https://github.com/tylerwagler/SolidEdge-MCP), the original Python MCP repository cloned during development. The upstream MIT notice is retained verbatim at `ThirdParty/SolidEdge-MCP/LICENSE`; clone provenance is at `ThirdParty/SolidEdge-MCP/UPSTREAM.md`.
-- **chuanmin qiu and contributors** — [solidedge-mcp-server](https://github.com/1337332551-dot/solidedge-mcp-server), the separate .NET project used for the bundled control/event executables. Its MIT notice is retained at `ThirdParty/DotNet/SolidEdge-MCP-Server-LICENSE.txt`.
-- **McNeel** — [RhinoAI / Rhino MCP Platform](https://github.com/mcneel/RhinoAI); see `ThirdParty/RhinoAI`.
-- **Solid Edge Community** — Interop.SolidEdge COM type definitions; see the separate notice under `ThirdParty/DotNet`.
+- **Tyler Wagler** - [SolidEdge-MCP](https://github.com/tylerwagler/SolidEdge-MCP), the original Python MCP repository cloned during development. The upstream MIT notice is retained verbatim at `ThirdParty/SolidEdge-MCP/LICENSE`; clone provenance is at `ThirdParty/SolidEdge-MCP/UPSTREAM.md`.
+- **chuanmin qiu and contributors** - [solidedge-mcp-server](https://github.com/1337332551-dot/solidedge-mcp-server), the separate .NET project used for the bundled control/event executables. Its MIT notice is retained at `ThirdParty/DotNet/SolidEdge-MCP-Server-LICENSE.txt`.
+- **McNeel** - [RhinoAI / Rhino MCP Platform](https://github.com/mcneel/RhinoAI); see `ThirdParty/RhinoAI`.
+- **Solid Edge Community** - Interop.SolidEdge COM type definitions; see the separate notice under `ThirdParty/DotNet`.
 
 The Tyler Wagler Python project is acknowledged as the original clone/reference. It is not represented as the source of the separate .NET executables.

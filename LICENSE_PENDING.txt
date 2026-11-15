@@ -1,15 +1,9 @@
-> INVENTAUR INC. — BY KRISHNA PARMAR
+> INVENTAUR INC. - BY KRISHNA PARMAR
 
-NO PROJECT-WIDE LICENSE HAS BEEN GRANTED
+NO FIRST-PARTY PROJECT LICENSE FILE IS INCLUDED
 
-The original Rhino3D-to-Solid-Edge workflow code is not currently distributed
-under an open-source license. Copyright remains with its respective owner(s).
-Viewing, downloading, or sharing this package does not by itself grant rights
-to modify, redistribute, or commercially use the original workflow code.
+No root project license is being added at the project owner's direction. This repository therefore does not claim that the first-party workflow is released under an open-source license.
 
-The vendored upstream component has its own license and notices; see
-THIRD_PARTY_NOTICES.md and ThirdParty/SolidEdge-MCP/LICENSE.
+AI-assisted or AI-generated source is not, by that fact alone, represented here as public-domain or openly licensed. No additional rights are granted by this note.
 
-Before describing this project as open source, the project owner must choose
-and add a root-level license after reviewing all contributions and third-party
-dependencies.
+Third-party components retain their own original licenses, copyright notices and attribution. See THIRD_PARTY_NOTICES.md, ThirdParty/SolidEdge-MCP/LICENSE and ThirdParty/DotNet.

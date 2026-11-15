@@ -5,7 +5,7 @@
 ## Before creating a release
 
 - [ ] Review `Docs/RELEASE_READINESS_AUDIT.md` and close every applicable acceptance item.
-- [ ] Confirm the project owner/copyright holder and choose a license for original workflow code. No project-wide license is included until that decision is made.
+- [x] No first-party root license file added at the project owner's direction. Do not describe the first-party workflow as open-source; preserve all upstream licenses and credits.
 - [ ] Review `THIRD_PARTY_NOTICES.md` for CPython/PSF license, psutil BSD license, pywin32 PSF license, McNeel Yak/MIT, self-contained .NET notices and managed dependency licenses.
 - [ ] Confirm redistribution terms for both SolidEdge-MCP upstream projects, self-contained .NET runtime files, CPython/Python wheels, Interop.SolidEdge and transitive dependencies; retain all upstream licences/notices.
 - [ ] Verify the Python runtime payload and offline wheelhouse are included; clean-install the `.venv` without any package index/network access.

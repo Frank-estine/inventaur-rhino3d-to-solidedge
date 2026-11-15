@@ -26,7 +26,7 @@ RAM/CPU/I/O baselines for a live conversion were not captured during this packag
 
 ## Release archive
 
-Archive packaging was not part of this source/documentation correction. The previously generated local ZIP was not changed in this continuation.
+The user requested source and documentation updates only; no ZIP was rebuilt for this continuation.
 
 
 ## GitHub source repository
