@@ -17,14 +17,10 @@
 
 ## Current verification
 
-- Test suite: 72 passed.
-- Python compileall: passed.
-- Installer/release-builder PowerShell parser: passed.
-- Bundled CPython 3.13.7 x64: isolated startup and clean venv creation passed.
-- Offline wheelhouse: psutil 7.2.2 and pywin32 312 installed/imported without package-index access.
-- Full local bootstrap: exit code 0, using `Runtime/Python/python.exe`.
-- Solid Edge MCP control/event apphost version checks: passed.
-- Rhino MCP 0.4.0: verified in Rhino 8 and 9.
-- SolidEdge.Application COM and Solid Edge 2026 ISO Metric template: found.
-- Final beta.3 archive build and clean extraction smoke: pending this final packaging pass.
-- Live disposable CAD conversion E2E, human visual review and first-party licensing: outstanding.
+- Regression suite: 78 passed; Python compileall, PowerShell parser checks and launcher/installer BOM checks passed.
+- Live Rhino/Solid Edge E2E: 45/45 native PAR imports; 27/27 nested assemblies completed; Root.asm disk-reopened with 11/11 direct occurrences verified; no partial, failed or skipped occurrences.
+- Final beta.3 ZIP: 99,904,138 bytes; SHA-256 425d3cc1dc7fe234d2763cb7a950bd23389e33b4a1b5ca07fc706f0ad2df8604; sidecar independently matched.
+- Independent extraction: 2,355 manifest-listed file hashes matched; ZIP entry set matched extracted package plus embedded manifest; extracted installer returned 0 and both launchers passed help.
+- Private GitHub repository: https://github.com/Frank-estine/inventaur-rhino3d-to-solidedge; initial commit 6ad58bdb5fd137245c99f45dfd0d1c22f8d3abfc; 3,885 files, 499 LFS paths; remote main verified; LFS dry-run clear; local LFS fsck passed.
+- Remaining before public release: human visual review, optional second-workstation validation, first-party licensing decision and third-party redistribution review. Repository remains private.
+- Scope: live CAD E2E was run in the local Rhino/Solid Edge environment; a second live conversion was not run from the separately extracted ZIP. No visual sign-off or second-workstation validation is claimed.

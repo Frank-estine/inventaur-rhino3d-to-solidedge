@@ -1,6 +1,6 @@
 # Status Report - Full Offline Bootstrap Restoration
 
-**Package state: INCOMPLETE pending final ZIP/extraction and live CAD E2E.**  
+**Package state: COMPLETE for beta.3 workflow E2E, offline bootstrap and private GitHub source publication.**  
 **Local bundled bootstrap state: COMPLETED.**
 
 ## Completed and verified
@@ -14,20 +14,25 @@
 - [x] Replaced recipient-side Git/.NET source-build installer with a full offline bootstrap and local Yak verification.
 - [x] Removed obsolete .NET 10 `DOTNET_ROOT` override from the bridge.
 - [x] Updated README, installer, release builder, dependency map, third-party notices, operator/developer docs and troubleshooting.
-- [x] Tests: `72 passed`.
+- [x] Tests: `78 passed`.
 - [x] Python `compileall`: passed.
 - [x] PowerShell installer/release-builder syntax checks: passed.
 - [x] Live local bootstrap: exit code 0; both MCP servers start with `--version`; bundled Python 3.13.7 x64 plus offline pywin32/psutil imports pass; Rhino MCP 0.4.0 verified for Rhino 8 and Rhino 9; Solid Edge COM and ISO Metric Part template detected.
 
-## Remaining acceptance criteria
+## Remaining before a public release
 
-- [ ] Build and inspect final beta.3 full-offline-bootstrap ZIP and SHA-256 sidecar.
-- [ ] Extract final ZIP to a clean folder and verify the offline installer plus legacy/branded launcher `--help` paths.
-- [ ] Run the disposable-model live Rhino MCP-to-Solid-Edge conversion E2E after this package restoration.
-- [ ] Complete separate human visual review.
-- [ ] Decide first-party project license; `LICENSE_PENDING.txt` remains.
-- [ ] Review Git commit/publication state.
+- [ ] Complete human visual viewport review of representative parts and assemblies.
+- [ ] Optional: validate installation and run on a second workstation.
+- [ ] Confirm first-party source copyright holder and choose a project-wide licence; LICENSE_PENDING.txt remains intentional.
+- [ ] Review redistribution terms for CPython, wheels, self-contained .NET runtime files, Interop.SolidEdge and transitive dependencies.
+- [ ] Keep the repository private until licensing and redistribution review is complete.
 
-## Important limitation
+## GitHub source publication
 
-Bootstrap verification proves the portable runtime, MCP binaries, Python dependencies, Yak package and local Solid Edge prerequisites. A complete CAD conversion still requires Rhino to be restarted, the intended `.3dm` open, `MCPStart`/`MCPConnect` active with `run_python`, and Solid Edge available. This cycle has not yet rerun a full disposable CAD conversion.
+- Private repository: https://github.com/Frank-estine/inventaur-rhino3d-to-solidedge
+- Branch: main; initial commit: 6ad58bdb5fd137245c99f45dfd0d1c22f8d3abfc
+- 3,885 files committed; 499 Git LFS paths. Remote branch and LFS transfer were verified.
+
+## Scope note
+
+The live CAD E2E was verified in the local Rhino/Solid Edge environment. The final ZIP was separately extracted and its installer and launcher smoke tests passed; a second live CAD conversion was not run from that extracted copy. Human visual sign-off and second-workstation validation are not claimed.

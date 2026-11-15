@@ -10,14 +10,18 @@
 - [ ] Confirm redistribution terms for self-contained .NET runtime files, CPython and Python wheels, Interop.SolidEdge and transitive dependencies; retain all required notices.
 - [ ] Verify the Python runtime payload and offline wheelhouse are included; clean-install the `.venv` without any package index/network access.
 - [ ] Verify `ThirdParty/RhinoAI/LICENSE` accompanies the bundled Rhino MCP Yak package.
-- [ ] Run the Python test suite, compileall, PowerShell parser and batch BOM checks.
-- [ ] Run `INSTALL.bat` from the extracted beta.3 ZIP on a clean folder; verify both MCP `--version` calls, bundled Python identity, offline wheel installation and Yak list checks.
-- [ ] Run a live test with a disposable Rhino model and disposable Solid Edge documents on the target application versions.
-- [ ] Review the generated ZIP manifest, exact archive file list and ZIP SHA-256 sidecar.
+- [x] Run the Python test suite (78 passed), compileall, PowerShell parser and batch BOM checks.
+- [x] Run the extracted beta.3 installer on a clean folder; exit code 0, bundled Python identity, offline dependency installation and both MCP version checks passed.
+- [x] Run the live Rhino 9 / Solid Edge 2026 conversion E2E; 45/45 PAR imports and 27/27 nested assemblies completed; Root.asm has 11/11 direct occurrences verified.
+- [x] Review the generated ZIP manifest, exact archive file list and ZIP SHA-256 sidecar; 2,355 manifest hashes and the sidecar were independently verified.
 - [ ] Search staged package for usernames, absolute paths, private model names, credentials, live logs, source CAD files and client data.
 - [ ] Confirm no local output under Runs, Logs or `_local` has entered the ZIP.
 - [ ] Verify Rhino MCP setup and Solid Edge template discovery on a second workstation.
 - [ ] Include tested versions and known limitations in release notes.
+
+## Internal source repository status
+
+The source upload is complete to the private repository https://github.com/Frank-estine/inventaur-rhino3d-to-solidedge. Branch main points to initial commit 6ad58bdb5fd137245c99f45dfd0d1c22f8d3abfc; 3,885 files and 499 Git LFS paths were pushed and verified. This is not a public release and does not grant redistribution rights.
 
 ## Before posting publicly
 

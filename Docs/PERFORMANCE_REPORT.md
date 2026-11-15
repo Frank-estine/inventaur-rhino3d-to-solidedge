@@ -13,7 +13,7 @@ Combined bundled Python and MCP runtime payload: 383,856,617 bytes (~366.1 MiB u
 
 ## Test and bootstrap execution
 
-- Pytest: 72 passed.
+- Pytest: 78 passed.
 - Compileall: passed.
 - PowerShell installer and release builder parser: passed.
 - Full local bootstrap: exit code 0 using bundled CPython 3.13.7 x64.
@@ -22,8 +22,13 @@ Combined bundled Python and MCP runtime payload: 383,856,617 bytes (~366.1 MiB u
 
 ## CAD conversion performance
 
-RAM/CPU/I/O baselines for a live conversion were not captured during this packaging/restoration cycle. No unsupported performance claim is made for runtime CAD conversion. A complete disposable-model live E2E and human visual review remain outstanding.
+RAM/CPU/I/O baselines for a live conversion were not captured during this packaging/restoration cycle. No unsupported performance claim is made for runtime CAD conversion. The live E2E is complete; human visual review of representative CAD geometry and annotations remains outstanding.
 
 ## Release archive
 
-The final beta.3 archive is rebuilt after the documentation audit. The ZIP sidecar contains its SHA-256; the internal `PACKAGE_MANIFEST.sha256` covers each packaged file except itself.
+The final beta.3 archive was rebuilt and independently verified. Size: 99,904,138 bytes. SHA-256: 425d3cc1dc7fe234d2763cb7a950bd23389e33b4a1b5ca07fc706f0ad2df8604. The sidecar matched independently; 2,355 manifest-listed file hashes and the exact archive entry set were verified.
+
+
+## GitHub source repository
+
+The private GitHub source repository contains 3,885 committed files and 499 Git LFS paths. The remote LFS dry-run found no outstanding uploads; local git lfs fsck passed. Repository: https://github.com/Frank-estine/inventaur-rhino3d-to-solidedge

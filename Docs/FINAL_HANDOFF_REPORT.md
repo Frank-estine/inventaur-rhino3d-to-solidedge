@@ -1,6 +1,6 @@
 # Final Handoff Report - Beta.3 Full Offline Bootstrap Restoration
 
-**Package state: INCOMPLETE until final archive extraction and live CAD E2E.**  
+**Package state: VERIFIED — live CAD E2E, offline bootstrap, final beta.3 archive and private GitHub source upload complete.**  
 **Local bundled bootstrap: COMPLETED and verified.**
 
 ## Delivered to the workspace
@@ -17,7 +17,7 @@
 
 ## Verification evidence
 
-- Python regression suite: 72 passed.
+- Python regression suite: 78 passed.
 - Python compileall: passed.
 - PowerShell installer and release builder syntax checks: passed.
 - Bundled `solidedge-mcp.exe --version`: passed.
@@ -29,10 +29,19 @@
 - SolidEdge.Application COM registration: found.
 - Solid Edge 2026 ISO Metric Part template: found.
 
-## Remaining verification
+## Remaining sign-off
 
-- Rebuild/inspect the final beta.3 ZIP and verify required assets, internal manifest and outer SHA-256.
-- Extract that final ZIP and verify bootstrap plus legacy/branded launchers.
-- Restart Rhino, reconnect MCP and rerun the disposable-model Rhino-to-Solid-Edge E2E.
-- Complete human visual viewport review.
-- First-party licensing and Git publication review remain pending.
+- Human visual inspection of representative part geometry, assembly placement and annotation output.
+- Optional second-workstation installation/run.
+- First-party copyright and project-wide licence decision; LICENSE_PENDING.txt remains intentional.
+- Third-party redistribution/licence review before public release or external distribution.
+
+## GitHub source state
+
+- Private repository: https://github.com/Frank-estine/inventaur-rhino3d-to-solidedge
+- Branch: main; initial source commit: 6ad58bdb5fd137245c99f45dfd0d1c22f8d3abfc
+- 3,885 committed files; 499 Git LFS paths. Remote main verified; LFS dry-run found no outstanding uploads; local Git LFS fsck passed.
+
+## Scope limitation
+
+The live CAD E2E was run in the local Rhino/Solid Edge environment. The final ZIP was independently extracted and its installer and launcher smoke tests passed; a second full CAD conversion was not started from that extracted copy. Human visual sign-off and second-workstation sign-off are not claimed.
