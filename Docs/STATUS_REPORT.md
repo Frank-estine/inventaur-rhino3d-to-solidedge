@@ -52,4 +52,4 @@ The live CAD E2E was verified in the local Rhino/Solid Edge environment. The fin
 - [x] Audited the parent CAD navigation page; its existing canonical workflow entry was already correct, so no duplicate index entry was added. Repository links in the workflow docs now use the verified canonical URL.
 - [x] Verified documentation links, launcher help and repository tests after the change.
 - [x] No ZIP, installer, runtime payload or GitHub release was rebuilt.
-- [ ] Documentation-only source changes are pending final scoped commit/push after validation.
+- [x] Documentation-only source changes committed and pushed to main in 19b408e; the remote branch was read back at the same commit. No release archive or GitHub release was created.

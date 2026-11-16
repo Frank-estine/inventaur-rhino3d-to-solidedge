@@ -51,6 +51,15 @@
 ## Scope limitation
 
 The live CAD E2E was run in the local Rhino/Solid Edge environment. The final ZIP was independently extracted and its installer and launcher smoke tests passed; a second full CAD conversion was not started from that extracted copy. Human visual sign-off and second-workstation sign-off are not claimed.
+## Documentation refresh publication record — 17 November 2026
+
+- Documentation-only commit: 19b408ee931fc532f34d3034a8998207bb28e680 (19b408e).
+- Branch: main.
+- Canonical remote: https://github.com/Krishna-Inventaur/inventaur-rhino3d-to-solidedge
+- GitHub remote readback matched the local commit after push.
+- Working tree was clean after publication.
+- No workflow code, installer, runtime payload, ZIP, package manifest or GitHub release was changed or created.
+
 ## Documentation refresh — 17 November 2026
 
 The user-facing project entry point and operating guides have been refreshed for community use. The root README now explains the original import problem, block-definition/repeated-occurrence mapping, staged STEP → PAR → ASM workflow, unit/transform safeguards, optional geometry repair boundary, Git LFS checkout, offline installer, Rhino MCP setup, run command, output folders and acceptance reports. The private Rhino forum draft has been rewritten in a first-person community tone. Operator, bootstrap, agent, developer, data-contract, architecture, Rhino MCP setup, Solid Edge bridge, release-note, troubleshooting and recovery instructions now agree with the actual launcher, CLI and run evidence. The parent CAD navigation entry was checked and retained because it already identified this workflow as its canonical owner.

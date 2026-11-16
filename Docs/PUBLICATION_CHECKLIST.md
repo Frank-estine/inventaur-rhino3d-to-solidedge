@@ -35,7 +35,7 @@ The source upload is complete to the private repository https://github.com/Krish
 - [x] INSTALL.bat, Rhino MCP connection, launcher commands, output folders and report-based verification documented.
 - [x] Agent/developer instructions, architecture/data contracts, Rhino MCP setup, Solid Edge bridge README and troubleshooting/recovery guides reconciled.
 - [x] Private forum post draft rewritten; parent CAD navigation entry checked and retained without a duplicate index row.
-- [ ] Commit and push the reviewed documentation-only source changes after final validation; do not create a release archive or GitHub release.
+- [x] Documentation-only source changes committed and pushed to main in 19b408e; remote readback matched. No release archive or GitHub release was created.
 
 ## Before posting publicly
 

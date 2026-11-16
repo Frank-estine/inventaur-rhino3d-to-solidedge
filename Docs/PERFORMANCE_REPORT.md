@@ -40,3 +40,8 @@ The package includes Tyler Wagler's original SolidEdge-MCP MIT license and attri
 ## Documentation-only update — 17 November 2026
 
 The project README, private forum post draft, operator runbook, bootstrap/deployment guide, agent/developer instructions, data contracts, troubleshooting/recovery guides and status records were refreshed. The parent CAD index was checked and its existing canonical workflow entry was retained. This is a documentation update only; no CAD conversion benchmark, runtime payload, installer or release archive was rebuilt. The recorded CAD E2E figures above are unchanged and remain structural/import verification rather than a performance benchmark or visual engineering sign-off.
+
+
+## Documentation source publication
+
+Documentation-only commit 19b408e (19b408ee931fc532f34d3034a8998207bb28e680) was pushed to the canonical GitHub main branch and verified by remote readback. No runtime benchmark was run for this documentation update and no release package was rebuilt.

@@ -61,3 +61,8 @@ Branch: main; initial commit: 6ad58bdb5fd137245c99f45dfd0d1c22f8d3abfc
 - [x] Operator runbook and bootstrap/deployment guide provide matching commands and recovery instructions.
 - [x] The existing CAD navigation entry was verified as canonical; repository URLs in the workflow docs use the verified repository path.
 - [ ] Public release and redistribution review remain separate open gates. This documentation update does not change the first-party licence decision or third-party redistribution status.
+
+
+## Documentation source update — 17 November 2026
+
+Documentation-only source commit 19b408e (19b408ee931fc532f34d3034a8998207bb28e680) is pushed to the canonical GitHub main branch; the remote branch was read back at the same hash. This does not close the independent publication blockers above: first-party licensing, third-party redistribution review, human visual sign-off and second-workstation validation remain open. No release archive or public GitHub release was created.
