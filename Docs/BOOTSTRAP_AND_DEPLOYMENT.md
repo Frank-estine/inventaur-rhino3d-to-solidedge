@@ -1,70 +1,102 @@
-# Inventaur Inc. - Bootstrap and Deployment
+# Bootstrap and Deployment
 
-**By Krishna Parmar**  
-**Release: 1.0.0-beta.3 - Full Offline Bootstrap Package**
+**Project:** Inventaur Inc. Rhino3D to Solid Edge
+**Version:** 1.0.0-beta.3
 
-## Package payload
+This document covers obtaining a complete workflow copy and installing its local dependencies. For day-to-day conversion steps, see the [Operator Runbook](OPERATOR_RUNBOOK.md).
 
-The distribution includes first-party Inventaur sources/docs, portable CPython 3.13.7 x64 with the PSF license, a local wheelhouse for `psutil`/`pywin32`, self-contained Solid Edge MCP control/event applications with private .NET runtime files, and the McNeel Rhino MCP Platform 0.4.0 Yak package with its MIT license. A manifest hashes every packaged file.
+## What is included
 
-The package is intended to be extracted and bootstrapped as a unit. Do not remove files from `Runtime/Python`, `Runtime/Wheels`, `Scripts/SOLIDEDGE-MCP/runtime/win-x64` or `ThirdParty/RhinoAI`.
+The full offline workflow payload contains:
+
+- First-party Rhino/Solid Edge workflow scripts, tests and documentation.
+- Portable CPython 3.13.7 x64, including its standard library and PSF license.
+- Local psutil and pywin32 wheels.
+- Self-contained Windows x64 Solid Edge MCP control/event applications with their private .NET runtime files.
+- McNeel's Rhino MCP Platform 0.4.0 Yak package and MIT license.
+- PowerShell bootstrap, third-party notices and package manifest.
+
+The bundle is designed to be kept together. Do not move or remove files from Runtime/Python, Runtime/Wheels, Scripts/SOLIDEDGE-MCP/runtime/win-x64 or ThirdParty/RhinoAI.
+
+## Obtain the complete payload
+
+The bundled runtimes are stored with Git LFS. For a repository checkout, install Git for Windows and Git LFS and clone as follows:
+
+~~~powershell
+git lfs install
+git clone https://github.com/Krishna-Inventaur/inventaur-rhino3d-to-solidedge.git
+cd inventaur-rhino3d-to-solidedge
+git lfs pull
+~~~
+
+Confirm that the large runtime files were downloaded and are real files before installation. Do not use GitHub's generated source ZIP as a complete offline installer input because LFS-managed files may be represented by pointer files.
+
+Alternatively, extract the complete offline workflow bundle into a new folder. Do not install from a partial copy of the repository.
 
 ## Prerequisites
 
 | Component | Requirement |
 |---|---|
 | Windows | Windows 10/11 x64 |
-| Rhino | Rhino 8.19+ or Rhino 9; intended saved .3dm open in the active session |
-| Solid Edge | Siemens Solid Edge 2023 or later, installed/licensed, with COM automation registered; Solid Edge 2026 is the verified baseline |
+| Rhino | Rhino 8.19+ or Rhino 9 |
+| Solid Edge | Siemens Solid Edge 2023 or later; installed/licensed with COM automation available |
+| Rhino MCP | McNeel Rhino MCP Platform loaded in Rhino |
+| MCP client | Connected to the intended Rhino document and exposing run_python |
 
-Python 3.13.7 x64, both Python dependency wheels, both Solid Edge MCP servers and the Rhino MCP Yak package are bundled. Git, the .NET SDK/runtime and internet access are not required by recipient bootstrap. Conversion also requires Rhino to be running with Rhino MCP connected (MCPStart, then MCPConnect) and the client to expose run_python.
+The live verification baseline is Rhino 9 + Solid Edge 2026. Other combinations should be verified on the target workstation.
 
 ## Installation
 
-Run `INSTALL.bat` from the extracted package root. It performs these checks and actions:
+Run **INSTALL.bat** from the complete extracted workflow root.
 
-1. verifies both MCP executables and the self-contained .NET files beside them;
-2. runs each MCP executable with `--version` to confirm its apphost/private runtime starts;
-3. verifies the included CPython 3.13.7 x64 runtime and creates/reuses `.venv`;
-4. installs `requirements.txt` exclusively from `Runtime/Wheels` using pip `--no-index`;
-5. verifies pywin32/psutil imports inside the isolated `.venv`;
-6. finds compatible Rhino installations and uses each Rhino's own `Yak.exe` to install the included local `Rhino-MCP-Platform 0.4.0` package if absent;
-7. verifies the Rhino MCP package listing and reports Solid Edge COM/template readiness.
+It:
 
-The installer does not open or modify any CAD model. It does not close or restart Rhino; the operator must restart Rhino after installation.
+1. verifies both self-contained Solid Edge MCP executables and their sibling .NET runtime files;
+2. checks that the bundled CPython 3.13.7 x64 runtime starts;
+3. creates or reuses the package-local .venv;
+4. installs requirements.txt from Runtime/Wheels with pip --no-index;
+5. verifies the psutil and pywin32 imports inside that environment;
+6. discovers compatible Rhino installations and installs/verifies the bundled local Rhino-MCP-Platform 0.4.0 Yak package where required;
+7. reports Solid Edge COM/template readiness.
 
-## Python runtime
+The complete offline bundle does not require the recipient to install system Python, Git, a .NET SDK/runtime or Python packages from the internet. Git and Git LFS are only needed when obtaining the payload from the source repository.
 
-The included interpreter is CPython 3.13.7 x64 at `Runtime/Python/python.exe`. The standard library, DLLs and Python Software Foundation license accompany it. Python application dependencies are shipped as wheels at `Runtime/Wheels`; the installer does not access PyPI or any remote package index.
+The installer does not launch Rhino, open a 3DM or establish the live MCP connection. Restart Rhino after the Yak plugin has been installed or updated.
 
-The workflow uses a package-local `.venv`. It does not modify a recipient's system Python installation or global packages.
+## Connect and run
 
-## Rhino MCP connection
+After installation:
 
-After the installer finishes, restart Rhino, open the intended model, run `MCPStart`, then `MCPConnect`. Verify that the connected MCP client exposes `run_python`. The conversion runner discovers the active document-scoped MCP listener; do not hard-code an MCP port.
+1. Restart Rhino.
+2. Open the intended saved 3DM.
+3. Run MCPStart, then MCPConnect.
+4. Confirm the connected MCP client exposes the document-scoped run_python tool.
+5. Run:
 
-The included Yak package is for Rhino 8.19+ / Rhino 9. On older Rhino 8 builds the installer skips this package and reports the version constraint.
+~~~powershell
+.\Scripts\Rhino3D_to_SolidEdge.bat --source "C:\Models\MyAssembly.3dm"
+~~~
 
-## Run and recovery
+The workflow discovers the active document-scoped MCP listener at runtime. Do not hard-code an MCP port. It does not open or switch Rhino documents.
 
-Use `Scripts/Rhino3D_to_SolidEdge.bat --source "C:\Models\model.3dm"`. The branded `Scripts/Inventaur_Rhino3D_to_SolidEdge.bat` launcher is equivalent. Both preserve the Python runner's exit code; no success message is printed after a failed preflight or run.
+## Runtime and output
 
-For a damaged installation, extract a fresh copy of the complete ZIP, run `INSTALL.bat`, restart Rhino and re-establish MCPStart/MCPConnect. Do not copy only the batch file or Python scripts without the adjacent runtime folders and wheelhouse.
+- Bundled Python: Runtime/Python/python.exe.
+- Offline wheels: Runtime/Wheels.
+- Isolated application environment: .venv.
+- Solid Edge MCP applications and private .NET files: Scripts/SOLIDEDGE-MCP/runtime/win-x64.
+- Rhino MCP Yak package: ThirdParty/RhinoAI.
 
-## Verification
+A conversion writes a new Desktop run folder by default, containing Rhino3D, STEP, Parts, Assemblies and Logs folders plus a run README. Use --output-root to select another location.
 
-The release build runs the Python regression suite and compileall. It checks the archive for the portable Python runtime, offline wheelhouse, both MCP runtimes and Rhino Yak package, validates the embedded file manifest, rejects CAD model data and excludes caches/debug symbols.
+## Verification and recovery
 
+The installer checks the local runtime and prerequisites; it does not prove that a CAD model will translate correctly. The conversion runner produces source, STEP, native import, assembly and final acceptance reports. Review those reports and visually inspect representative output parts and assemblies.
 
-## Rhino assembly model requirement
+For a damaged/incomplete installation, obtain a fresh complete source checkout with Git LFS or extract the full workflow bundle, run INSTALL.bat, restart Rhino and re-establish MCPStart/MCPConnect. Do not copy only the batch file or Python scripts without their adjacent runtimes.
 
-Build the assembly structure with Rhino block definitions and nested block instances before conversion:
+For run recovery, use the exact original source, output root and run ID with --resume only after inspecting the stage reports and confirming prior outputs. See OPERATOR_RUNBOOK.md and TROUBLESHOOTING.md.
 
-- The active document's top-level block instances form the root assembly.
-- Parent block definitions containing child block instances represent subassemblies.
-- Leaf block definitions hold reusable part geometry.
-- Repeated components should be repeated instances of the same block definition, with each instance retaining its own placement transform.
-- Block definition names must be unique after case/whitespace normalization, and the nested block-reference graph must be acyclic.
-- Groups alone are not assembly definitions. Do not explode the nested block structure before conversion.
+## Redistribution and licence status
 
-Duplicate normalized names and cyclic block references fail preflight. Geometry placed directly inside an assembly definition is treated as local component geometry; dedicated leaf part blocks are preferred.
+The first-party workflow licence remains pending in LICENSE_PENDING.txt. Third-party notices are retained with their respective components. Do not infer redistribution rights from repository visibility; review the relevant licence terms before republishing the source or runtime bundle.

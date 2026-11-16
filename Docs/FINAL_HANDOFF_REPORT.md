@@ -1,6 +1,6 @@
 # Final Handoff Report - Beta.3 Full Offline Bootstrap Restoration
 
-**Package state: VERIFIED — live CAD E2E, offline bootstrap, final beta.3 archive and private GitHub source upload complete.**  
+**Package state: VERIFIED — live CAD E2E, offline bootstrap, final beta.3 archive and private GitHub source upload complete.**
 **Local bundled bootstrap: COMPLETED and verified.**
 
 ## Delivered to the workspace
@@ -44,10 +44,17 @@
 
 ## GitHub source state
 
-- Private repository: https://github.com/Frank-estine/inventaur-rhino3d-to-solidedge
+- Private repository: https://github.com/Krishna-Inventaur/inventaur-rhino3d-to-solidedge
 - Branch: main; initial source commit: 6ad58bdb5fd137245c99f45dfd0d1c22f8d3abfc
-- 3,885 committed files; 499 Git LFS paths. Remote main verified; LFS dry-run found no outstanding uploads; local Git LFS fsck passed.
+- 3,907 committed files; 499 Git LFS paths. Remote main verified; LFS dry-run found no outstanding uploads; local Git LFS fsck passed.
 
 ## Scope limitation
 
 The live CAD E2E was run in the local Rhino/Solid Edge environment. The final ZIP was independently extracted and its installer and launcher smoke tests passed; a second full CAD conversion was not started from that extracted copy. Human visual sign-off and second-workstation sign-off are not claimed.
+## Documentation refresh — 17 November 2026
+
+The user-facing project entry point and operating guides have been refreshed for community use. The root README now explains the original import problem, block-definition/repeated-occurrence mapping, staged STEP → PAR → ASM workflow, unit/transform safeguards, optional geometry repair boundary, Git LFS checkout, offline installer, Rhino MCP setup, run command, output folders and acceptance reports. The private Rhino forum draft has been rewritten in a first-person community tone. Operator, bootstrap, agent, developer, data-contract, architecture, Rhino MCP setup, Solid Edge bridge, release-note, troubleshooting and recovery instructions now agree with the actual launcher, CLI and run evidence. The parent CAD navigation entry was checked and retained because it already identified this workflow as its canonical owner.
+
+The canonical repository URL used by the documentation is https://github.com/Krishna-Inventaur/inventaur-rhino3d-to-solidedge. The existing origin and the canonical URL were both checked with git ls-remote and returned the same main commit at the time of this documentation update.
+
+No CAD source, test, installer, bundled runtime, distribution archive or release was changed or rebuilt in this documentation-only pass. The beta.3 automated E2E results and remaining human visual/second-workstation/licensing sign-offs above remain unchanged.

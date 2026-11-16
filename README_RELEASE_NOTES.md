@@ -14,3 +14,10 @@ Install: extract the full ZIP, run `INSTALL.bat`, restart Rhino, open the source
 - Windows 10/11 x64, Rhino 8.19+ or Rhino 9, and licensed Siemens Solid Edge 2023+ with COM automation registered and available. Solid Edge 2026 is the verified baseline.
 - Rhino must be open with the intended .3dm active. Run MCPStart then MCPConnect; the connected AI/MCP client must expose run_python.
 - The Rhino model must encode assemblies/subassemblies using nested block definitions and block instances. Leaf blocks hold reusable part geometry; use unique block names and an acyclic block hierarchy. Groups alone are insufficient.
+
+
+## Getting a complete source checkout
+
+The source repository stores bundled Python and Solid Edge runtime files with Git LFS. When cloning the repository, install Git LFS and run git lfs pull before installing. GitHub's automatically generated source archive may contain LFS pointer files instead of the actual runtime payload.
+
+For the complete operator procedure, use [README.md](README.md), [Bootstrap and Deployment](Docs/BOOTSTRAP_AND_DEPLOYMENT.md) and [Operator Runbook](Docs/OPERATOR_RUNBOOK.md). The release notes describe beta.3; the current installer and runtime contract is owned by those guides.

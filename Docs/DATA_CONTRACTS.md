@@ -24,3 +24,13 @@ A repeated Rhino definition reuses the exact same native `.par` or `.asm`; each 
 ## Source contract
 
 The original `.3dm` is never saved. Colourisation writes a separate derived file. STEP exports read that colourized file and copy object RGB/alpha.
+
+
+## Acceptance and geometry interpretation
+
+- The exact saved 3DM path and document-scoped Rhino runtime identity are required; current in-memory state is captured to a separate run-owned snapshot and bound by SHA-256.
+- A unique block definition is the reusable identity; each block instance is a distinct occurrence with its own composed transform. Repeated occurrences reuse the native file where the transform contract permits.
+- Non-unit scale that cannot be represented by the Solid Edge occurrence transform is handled as a separate baked geometry variant and recorded in the identity/import reports.
+- A parent definition may contain its own geometry as well as child block instances; directly owned geometry is represented as local component geometry.
+- Native body validity, open/sheet state, face/edge counts and area/volume signatures are diagnostics. They must be interpreted against design intent and translator output; they are not a blanket requirement that every imported object be a closed solid.
+- Automated hashes, save/close/reopen checks and occurrence-transform audits establish structural consistency, not visual or manufacturing sign-off.

@@ -42,3 +42,10 @@ The upstream C# projects reference Interop.SolidEdge 108.0.0 and the Model Conte
 ## Developer-only rebuild
 
 A developer may rebuild the MCP servers using the pinned upstream source and a compatible .NET 8 SDK. This is separate from recipient installation. The release builder includes the already-published binaries from `runtime/win-x64`.
+
+
+## How this bridge is used
+
+This folder is an implementation component, not the user-facing conversion entry point. Operators should start with the [workflow README](../../README.md) and [operator runbook](../../Docs/OPERATOR_RUNBOOK.md). The documented batch launcher starts the conversion supervisor, which creates and owns the bridge session for that run. Do not start the bridge manually as a separate prerequisite unless debugging its implementation.
+
+The recipient installation requirements and bundled runtime are described in [Bootstrap and Deployment](../../Docs/BOOTSTRAP_AND_DEPLOYMENT.md). The bridge's local security and process-isolation rules above remain authoritative for changes to this component.

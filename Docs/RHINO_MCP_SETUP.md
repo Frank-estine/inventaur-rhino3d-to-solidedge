@@ -40,3 +40,17 @@ The bundled Yak package is McNeel's official Rhino MCP Platform 0.4.0 Windows pa
 Keep Rhino open with the intended saved .3dm document active. Run MCPStart, then MCPConnect, and verify that the connected AI/MCP client exposes the document-scoped run_python tool. The installer does not create this live session.
 
 The .3dm must encode the intended assembly hierarchy using nested Rhino block definitions and instances: parent blocks for assemblies/subassemblies and leaf blocks for reusable parts. Groups alone do not create native assembly structure. Block names must be unique after case/whitespace normalization and the hierarchy must not contain cycles.
+
+
+## Obtain the complete workflow files
+
+When using a Git checkout, install Git LFS and pull the bundled runtime objects after cloning. A generated GitHub source ZIP is not a complete offline bootstrap when LFS payloads are required.
+
+~~~powershell
+git lfs install
+git clone https://github.com/Krishna-Inventaur/inventaur-rhino3d-to-solidedge.git
+cd inventaur-rhino3d-to-solidedge
+git lfs pull
+~~~
+
+Alternatively, extract the complete offline workflow bundle. Keep its directory structure intact and run INSTALL.bat from the workflow root. See [Bootstrap and Deployment](BOOTSTRAP_AND_DEPLOYMENT.md) for the exact installer checks and [Operator Runbook](OPERATOR_RUNBOOK.md) for the conversion sequence.

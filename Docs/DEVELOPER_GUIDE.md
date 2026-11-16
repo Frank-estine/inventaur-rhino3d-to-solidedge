@@ -59,3 +59,19 @@ python -m compileall -q .\Scripts .\tests
 The release builder packages the pinned portable Python payload, wheelhouse, self-contained MCP binaries and local Yak package. Rebuilding the upstream C# MCP binaries is a developer-only operation requiring the pinned source and compatible .NET 8 SDK; it is not part of recipient bootstrap.
 
 The Python CI suite is host-independent. It cannot prove RhinoCommon or Solid Edge COM behavior on another machine. Maintain a separate live acceptance procedure using disposable CAD files.
+
+
+## Fresh checkout and operator handoff
+
+The complete source checkout includes Git LFS-managed runtime payloads. A new development workstation should install Git LFS, clone the canonical repository and pull the LFS objects before trying to run INSTALL.bat. A GitHub-generated source ZIP may contain LFS pointer files and is not a complete runtime checkout. The alternative is the separately prepared complete offline workflow bundle.
+
+For the recipient install/run procedure, follow README.md and Docs/OPERATOR_RUNBOOK.md rather than reconstructing commands from this developer guide. Do not change runtime, installer or release behavior as part of a documentation-only task.
+
+## Validation levels
+
+- Host-independent pytest and compileall validate Python contracts and orchestration logic.
+- Installer/launcher checks validate the local bootstrap and entrypoint behavior.
+- Live Rhino/Solid Edge E2E validates the real MCP, RhinoCommon and Solid Edge COM path on the tested workstation.
+- Human visual inspection validates geometry/appearance and engineering intent; it is not replaced by hashes, counts or unit tests.
+
+Record the exact test command, result, source revision and any live prerequisites. Never describe host-independent tests as proof of live CAD compatibility.

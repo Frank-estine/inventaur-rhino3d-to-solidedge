@@ -88,3 +88,26 @@ This guide describes the work an AI assistant may help with around the determini
 - **Rollback:** path/hash of the preserved pre-change source.
 - **Acceptance:** checks required after save/reopen and STEP/native re-import.
 - **Result:** PASS, FAIL or NEEDS HUMAN REVIEW. Do not use PASS when visual review or a required native reopen is missing.
+
+## Workflow baseline and evidence ownership
+
+The canonical human procedure is Docs/OPERATOR_RUNBOOK.md. For a new conversion, use the documented batch launcher and bind analysis to one run folder. The expected report set is:
+
+- Logs/Reports/live_document_snapshot.json and rhino_source_preflight.json for source identity.
+- Logs/Reports/name_identity_manifest.json and step_export_e2e.json for definition identity and STEP export.
+- Logs/Reports/native_part_import_e2e.json for native PAR import, body diagnostics and document cleanup.
+- Logs/Reports/assembly_build_e2e.json for nested/root ASM references and occurrence transforms.
+- Logs/Reports/final_acceptance_audit.json for the consolidated result.
+- Logs/script_manifest.json and Logs/workflow_config.json for code/config provenance.
+
+Never combine reports from separate run IDs or source snapshot hashes. A previous report is context only unless the current run explicitly records and verifies reuse of its artifacts.
+
+## Safe resume rule
+
+The CLI supports --resume, but it is not a generic retry switch. Use it only with the original source path, output root and run ID. Confirm that the snapshot and last completed stage outputs exist and match their recorded hashes. If a mutating Solid Edge operation timed out, classify it as UNKNOWN_OUTCOME and reconcile the process, document and artifact state before continuing. Do not delete the previous stage evidence to force a clean restart.
+
+## Geometry and engineering review boundary
+
+The standard pipeline transfers and verifies geometry; it does not guarantee that every imported object is a solid. Surface/sheet bodies can be correct design content. Do not recommend Boolean union, tolerance changes or automatic repair just to increase a solid-body count. Use the separate Rhino Geometry Repair Playbook only when the source-side evidence establishes a repairable defect, and keep original and repaired candidates separate.
+
+A completed automated audit is not a manufacturing approval. Human review remains necessary for representative PAR/ASM geometry, orientation, colour, clearances, dimensions, annotations and downstream design intent.

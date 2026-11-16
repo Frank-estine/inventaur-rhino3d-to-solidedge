@@ -1,8 +1,8 @@
 # Inventaur Inc. - Release Readiness Audit
 
-**Product:** Rhino3D to Solid Edge Automation  
-**Creator:** Krishna Parmar  
-**Package version:** 1.0.0-beta.3  
+**Product:** Rhino3D to Solid Edge Automation
+**Creator:** Krishna Parmar
+**Package version:** 1.0.0-beta.3
 **Audit date:** 15 November 2026
 
 ## Packaging contract
@@ -44,9 +44,9 @@ Inventaur branding applies to first-party filenames, metadata, installer/launche
 
 ## GitHub source state
 
-Private repository: https://github.com/Frank-estine/inventaur-rhino3d-to-solidedge
+Private repository: https://github.com/Krishna-Inventaur/inventaur-rhino3d-to-solidedge
 Branch: main; initial commit: 6ad58bdb5fd137245c99f45dfd0d1c22f8d3abfc
-3,885 files committed; 499 Git LFS paths; remote branch and LFS transfer verified.
+3,907 files committed; 499 Git LFS paths; remote branch and LFS transfer verified.
 
 
 ## Upstream credit and prerequisite documentation
@@ -54,3 +54,10 @@ Branch: main; initial commit: 6ad58bdb5fd137245c99f45dfd0d1c22f8d3abfc
 - Tyler Wagler's SolidEdge-MCP Python clone is credited in the README and third-party notices; the original MIT license is retained under ThirdParty/SolidEdge-MCP.
 - The separate .NET MCP control/event server source has its own attribution and MIT license under ThirdParty/DotNet.
 - README prerequisites explicitly cover Rhino/MCPStart/MCPConnect/run_python, Solid Edge 2023+ with COM, and nested block definitions/instances for the assembly hierarchy.
+## Community onboarding documentation — 17 November 2026
+
+- [x] Root README explains the Rhino block-to-native-assembly mapping, motivation, conversion stages, accuracy checks, prerequisites, Git LFS acquisition, install, Rhino MCP connection, run command, outputs, diagnostics and limitations.
+- [x] Rhino Forum draft uses a community-oriented introduction, concrete prior import failure evidence and clear feedback questions.
+- [x] Operator runbook and bootstrap/deployment guide provide matching commands and recovery instructions.
+- [x] The existing CAD navigation entry was verified as canonical; repository URLs in the workflow docs use the verified repository path.
+- [ ] Public release and redistribution review remain separate open gates. This documentation update does not change the first-party licence decision or third-party redistribution status.

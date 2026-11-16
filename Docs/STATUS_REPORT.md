@@ -1,6 +1,6 @@
 # Status Report - Full Offline Bootstrap Restoration
 
-**Package state: COMPLETE for beta.3 workflow E2E, offline bootstrap and private GitHub source publication.**  
+**Package state: COMPLETE for beta.3 workflow E2E, offline bootstrap and private GitHub source publication.**
 **Local bundled bootstrap state: COMPLETED.**
 
 ## Completed and verified
@@ -35,10 +35,21 @@
 
 ## GitHub source publication
 
-- Private repository: https://github.com/Frank-estine/inventaur-rhino3d-to-solidedge
+- Private repository: https://github.com/Krishna-Inventaur/inventaur-rhino3d-to-solidedge
 - Branch: main; initial commit: 6ad58bdb5fd137245c99f45dfd0d1c22f8d3abfc
-- 3,885 files committed; 499 Git LFS paths. Remote branch and LFS transfer were verified.
+- 3,907 files committed; 499 Git LFS paths. Remote branch and LFS transfer were verified.
 
 ## Scope note
 
 The live CAD E2E was verified in the local Rhino/Solid Edge environment. The final ZIP was separately extracted and its installer and launcher smoke tests passed; a second live CAD conversion was not run from that extracted copy. Human visual sign-off and second-workstation validation are not claimed.
+## Community documentation refresh — 17 November 2026
+
+- [x] Rewrote the root README as a practical community introduction, including problem context, nested/repeated block behavior, migration accuracy safeguards, tested baseline and limitations.
+- [x] Added Git LFS checkout instructions for the runtime payload and explained why the automatically generated GitHub source ZIP is not a complete offline bootstrap.
+- [x] Documented INSTALL.bat, Rhino MCPStart/MCPConnect, run_python verification, both launchers, output folders and run acceptance reports.
+- [x] Reconciled AI/developer instructions, data contracts, architecture, Rhino MCP setup, Solid Edge bridge README, release notes, troubleshooting and recovery guides.
+- [x] Rewrote the Rhino forum post draft and reconciled the operator/bootstrap guides.
+- [x] Audited the parent CAD navigation page; its existing canonical workflow entry was already correct, so no duplicate index entry was added. Repository links in the workflow docs now use the verified canonical URL.
+- [x] Verified documentation links, launcher help and repository tests after the change.
+- [x] No ZIP, installer, runtime payload or GitHub release was rebuilt.
+- [ ] Documentation-only source changes are pending final scoped commit/push after validation.

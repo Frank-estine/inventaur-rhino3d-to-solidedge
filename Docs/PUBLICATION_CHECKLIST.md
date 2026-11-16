@@ -26,7 +26,16 @@
 
 ## Internal source repository status
 
-The source upload is complete to the private repository https://github.com/Frank-estine/inventaur-rhino3d-to-solidedge. Branch main points to initial commit 6ad58bdb5fd137245c99f45dfd0d1c22f8d3abfc; 3,885 files and 499 Git LFS paths were pushed and verified. This is not a public release and does not grant redistribution rights.
+The source upload is complete to the private repository https://github.com/Krishna-Inventaur/inventaur-rhino3d-to-solidedge. Branch main points to initial commit 6ad58bdb5fd137245c99f45dfd0d1c22f8d3abfc; 3,907 files and 499 Git LFS paths were pushed and verified. This is not a public release and does not grant redistribution rights.
+
+## Community onboarding documentation — 17 November 2026
+
+- [x] Root README rewritten for Rhino community readers with problem context, feature overview, tested baseline and known limitations.
+- [x] Git LFS clone/pull and complete offline-bundle instructions documented.
+- [x] INSTALL.bat, Rhino MCP connection, launcher commands, output folders and report-based verification documented.
+- [x] Agent/developer instructions, architecture/data contracts, Rhino MCP setup, Solid Edge bridge README and troubleshooting/recovery guides reconciled.
+- [x] Private forum post draft rewritten; parent CAD navigation entry checked and retained without a duplicate index row.
+- [ ] Commit and push the reviewed documentation-only source changes after final validation; do not create a release archive or GitHub release.
 
 ## Before posting publicly
 

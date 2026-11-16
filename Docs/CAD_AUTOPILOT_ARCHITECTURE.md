@@ -28,3 +28,12 @@ No-argument mode performs safe source discovery and proceeds only when exactly o
 
 ## Recovery
 Use --resume only against the exact run ID after reconciling its reports and files.
+
+
+## User handoff
+
+The architecture view explains stage ownership; it is not the installation procedure. Start with the repository README and follow Docs/OPERATOR_RUNBOOK.md for Git LFS checkout, offline installation, Rhino MCP connection, conversion launch, output review and recovery.
+
+A parent block definition may contain both child block instances and geometry directly owned by that definition. The latter is represented as local component geometry and may produce a companion native PAR alongside the parent ASM. Dedicated leaf blocks are preferred for reusable part geometry.
+
+The automated acceptance checks establish source-bound files, native reopen state, references and occurrence transforms. They do not replace human visual review or manufacturing sign-off.

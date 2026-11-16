@@ -67,3 +67,23 @@ Check every referenced PAR/ASM path and the native import report before rebuildi
 ## A stage times out
 
 Treat a mutating operation as `UNKNOWN_OUTCOME`. Inspect process identity, active document, stage report and output hashes before continuing. Do not automatically replay a timed-out COM call or placement batch.
+
+## Git checkout contains tiny pointer files or bundled executables are missing
+
+The source repository uses Git LFS for the portable Python runtime and Solid Edge MCP runtime payload. Install Git for Windows and Git LFS, then run git lfs install and git lfs pull from the repository root. A GitHub-generated source ZIP does not perform the LFS checkout and may contain pointer text instead of the actual runtime files. Alternatively, use the complete offline workflow bundle. Do not run INSTALL.bat from a partial folder copy.
+
+## INSTALL.bat reports a missing runtime or dependency
+
+Run INSTALL.bat from the workflow root, not from inside Scripts. Confirm Runtime/Python/python.exe, Runtime/Wheels and both Solid Edge MCP runtime folders are present and contain real files. Review the installer output for the first failed verification. Do not replace the bundled interpreter with a system Python or download unpinned dependencies as a workaround.
+
+## Source is ambiguous or does not match the active Rhino session
+
+Open the intended 3DM in the Rhino session connected through MCPStart/MCPConnect. Pass its exact path with --source. The runner does not open/switch documents and rejects a path that does not match a live document-scoped MCP session. When more than one Rhino document is connected, always pass --source.
+
+## A new run reports that the output folder is not empty
+
+Use a new, empty output root for a fresh run. Do not delete old outputs without first checking their run ID, reports, hashes and recovery value. To continue an existing run, use its original --source, --output-root and --run-id with --resume after verifying its last completed checkpoint.
+
+## A conversion reports incomplete native parts or assemblies
+
+Use Logs/Reports/step_export_e2e.json, native_part_import_e2e.json, assembly_build_e2e.json and final_acceptance_audit.json from the same run. Compare the source and STEP hashes, expected definition/occurrence inventory, native file existence, save/close/reopen state and transform checks. Distinguish missing bodies, invalid bodies, open sheet bodies and multiple bodies. Do not assume a sheet body is a failed solid or silently Boolean/repair it.

@@ -1,54 +1,60 @@
-> **Inventaur Inc.** — by **Krishna Parmar**
-
 # AI Agent Instructions
 
-These instructions apply to AI coding agents, assistants, and automation workers operating in this repository.
+These instructions apply to AI coding agents, assistants and automation workers operating in this repository.
 
 ## Read before acting
 
-1. Read PROJECT_IDENTITY.md for the Inventaur ownership/naming and third-party attribution boundary.
-2. Read Docs/RELEASE_READINESS_AUDIT.md before changing package/release behavior.
+1. Read this README and PROJECT_IDENTITY.md.
+2. Read Docs/OPERATOR_RUNBOOK.md before running a conversion.
+3. Read Docs/BOOTSTRAP_AND_DEPLOYMENT.md before changing installation or runtime setup.
+4. Read Docs/DATA_CONTRACTS.md, Docs/CAD_AUTOPILOT_ARCHITECTURE.md and Docs/SUPERVISION_AND_RECOVERY.md before changing pipeline behavior.
+5. For geometry defects, read Docs/RHINO_GEOMETRY_REPAIR_PLAYBOOK.md.
+6. For diagnostic/report interpretation, read Docs/AI_OPERATOR_GUIDE.md.
+7. For code changes, read Docs/DEVELOPER_GUIDE.md and the relevant tests.
+8. Read Docs/RELEASE_READINESS_AUDIT.md before changing release or redistribution behavior.
 
-1. Read README.md.
-2. Read Docs/OPERATOR_RUNBOOK.md before executing the workflow.
-3. Read Docs/DATA_CONTRACTS.md and Docs/SUPERVISION_AND_RECOVERY.md before changing pipeline behavior.
-4. For geometry defects, read Docs/RHINO_GEOMETRY_REPAIR_PLAYBOOK.md.
-5. For code changes, read Docs/DEVELOPER_GUIDE.md and run the relevant tests.
+## Source and execution boundaries
 
-## Source-of-truth and safety rules
+- The exact saved Rhino 3DM path and the document-scoped Rhino runtime identity must match the live MCP session before the runner proceeds.
+- The source document must already be open in Rhino. The workflow does not launch Rhino, open/switch the source document, save over it, rename it or close it.
+- The runner captures current in-memory Rhino state to a separate run-owned snapshot and verifies the snapshot before conversion. Unsaved in-memory edits may therefore appear in the snapshot without being saved back to the user's source document.
+- Rhino MCP must expose the document-scoped run_python tool. Discover the live endpoint; never hard-code an MCP port.
+- Solid Edge work runs through the run-owned isolated bridge. Do not attach to or mutate an unrelated foreground Solid Edge session.
+- Do not run live CAD integration tests casually. Use a disposable model/output and the explicit operator authorization required by the test.
 
-- Treat the currently selected Rhino 3DM and the user's live Rhino document as source data. Never overwrite, save, rename, switch, or close the user's source document as part of preflight or repair.
-- The live document must already be open in Rhino and attached to the intended MCP listener. Verify the exact path, document runtime identity, and run_python availability before any mutation.
-- Capture the live state to a run-owned snapshot and verify it by reopening and comparing semantic model data. All derived edits must operate on a separate copy.
-- Do not add customer project names, model files, source paths, personal usernames, machine names, tokens, local database files, run reports, or private logs to the public repository.
-- Preserve object identity and attributes: block-definition identity, occurrence transforms, object IDs, names, layers, colours, alpha, units, and document tolerance must not be discarded without an explicit approved reason.
-- Do not Boolean-union parts merely to force a solid. Do not explode Breps into faces. Do not silently delete open surfaces, construction geometry, meshes, SubD, curves, or nested block references.
-- Never relax tolerances to force a pass. Report the actual document units and tolerance.
-- AI-generated suggestions are not verification. A stage is complete only when its output is reopened and independently checked against expected source evidence.
+## Model integrity and geometry
 
-## Geometry repair workflow
+- Preserve block-definition identity, occurrence identity and transforms, object IDs, names, layers, RGB/alpha attributes, units and model tolerance unless an explicitly approved operation changes them.
+- Use nested block definitions and instances to encode assembly structure. Rhino Groups alone are not assembly definitions.
+- Treat invalid Breps, open surfaces, multiple bodies, missing geometry and STEP/Parasolid translation differences as distinct conditions.
+- The normal conversion path does not automatically Boolean-union, heal, simplify or loosen tolerance to force a solid.
+- Optional JoinBreps and duplicate-candidate BRep repair tools are separate operations. Work on a copy, preserve before/after evidence and require operator approval for topology-changing work.
+- Never delete open surfaces, construction geometry, meshes, SubD, curves or nested references merely to make an import report look cleaner.
+- AI analysis is diagnostic; RhinoCommon and Solid Edge perform deterministic CAD operations. AI suggestions are not geometry verification.
 
-- Treat invalid Breps, naked edges, non-solids, multiple bodies, missing faces, and STEP/Parasolid translation differences as distinct conditions. Do not call all of them "bad geometry".
-- Begin read-only: collect the Rhino object ID, block definition, object attributes, validity log, naked-edge count, face/edge count, solid/open state, bounding box, area/volume where available, units and absolute tolerance.
-- Produce a diagnosis and a minimal repair plan before editing. Identify which objects will change and what evidence will demonstrate that the change is safe.
-- Work on a copy. Keep the pre-repair file and a machine-readable before/after report.
-- Use the least destructive operation first. The optional inventaur_repair_breps_for_step_v1.py makes duplicate candidates and writes a new 3DM/report; it is not part of the main conversion path.
-- A repair is not accepted merely because Rhino reports success. Recheck validity, face/edge counts, naked edges, solid state, bounding box, area/volume and object attributes. Reject unexplained geometry loss or change.
-- Re-export only the repaired copy to STEP and import into a disposable Solid Edge document. Save, close, reopen and compare native topology and file hashes. Keep warnings visible.
-- Request human approval before any destructive GUI command, topology-changing operation, tolerance change, Boolean operation, object deletion, source replacement, or production export.
+## Evidence and acceptance
+
+- Bind all stage evidence to the same run ID, source snapshot SHA-256 and script manifest.
+- Read the source snapshot, STEP export, native import, assembly and final acceptance reports for that run.
+- A native import is not accepted only because COM returned success. Reopen the saved PAR/ASM files from disk and verify hashes, references, occurrence counts and transforms.
+- Keep solid/sheet body state, validity, face/edge counts and warnings visible. A valid surface body may be intentional.
+- Hash and occurrence checks do not replace human visual inspection of shape, orientation, colour, clearances, annotation or manufacturing requirements.
+- Keep verification claims precise: static, unit-test, integration, live CAD or visual sign-off.
 
 ## Execution, recovery and reporting
 
-- Use the packaged CLI and existing stage scripts. Do not invent command-line flags.
-- Inspect the latest run configuration, stage report and process ownership before retrying.
-- After a timeout, use UNKNOWN_OUTCOME until live state and reports prove what happened. Do not blindly replay a mutating COM call or assembly placement batch.
-- Do not close or terminate the user's foreground Rhino or Solid Edge process. Only close a process/document that the workflow can positively identify as owned by its run.
-- Preserve failed evidence. Never promote incomplete or unverified files into the deliverable folder.
-- Report exact files changed, tests run, test results, residual warnings, and any manual visual review still required.
+- Use the documented launchers and existing CLI options. Do not invent command-line flags or use stale shortcuts.
+- For a fresh run, use a new empty output folder. For recovery, inspect the exact prior run and resume only with its original source, output root and run ID after verifying the saved checkpoint outputs.
+- Treat a timeout on a mutating COM/MCP call as UNKNOWN_OUTCOME until the process, open documents, stage reports and output hashes prove what happened. Never blindly replay a mutation.
+- Preserve failed run evidence. Do not delete derived output or logs until its ownership, references and recovery value are understood.
+- Do not close or terminate user-owned foreground Rhino or Solid Edge processes. Only close a process/document positively identified as owned by the workflow run.
+- Report exact files changed, tests run, test results, residual warnings and manual review still required.
 
-## Public-repository hygiene
+## Public repository hygiene
 
-- Keep Runs/, Logs/, dist/, _local/, build outputs, caches, backups and real CAD models out of Git.
-- Run tools/build_release.ps1 to create the distributable ZIP. Do not manually zip the working directory.
-- Check the generated manifest and search the staging tree for local paths, user names, secrets, private model identifiers and run data before sharing.
-- Preserve the upstream license and attribution. Do not imply Siemens endorsement.
+- Keep run data, source CAD models, native PAR/ASM/DFT files, logs, caches, backups, build output and local configuration out of Git.
+- The source repository uses Git LFS for large runtime payloads. A complete source checkout requires Git LFS; GitHub's automatically generated source archive is not a substitute for the full offline bootstrap.
+- Do not run the release builder, rebuild packages or create/publish a release unless that work is explicitly requested.
+- Before any authorized publication, inspect the staged tree for personal paths, usernames, secrets, private model identifiers, live logs and proprietary data.
+- Preserve third-party licenses and attribution. Do not imply Siemens or McNeel endorsement.
+- The first-party license remains pending; repository visibility does not grant redistribution rights.

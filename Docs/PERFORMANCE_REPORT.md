@@ -31,9 +31,12 @@ The user requested source and documentation updates only; no ZIP was rebuilt for
 
 ## GitHub source repository
 
-The private GitHub source repository contains 3,885 committed files and 499 Git LFS paths. The remote LFS dry-run found no outstanding uploads; local git lfs fsck passed. Repository: https://github.com/Frank-estine/inventaur-rhino3d-to-solidedge
+The private GitHub source repository contains 3,907 committed files and 499 Git LFS paths. The remote LFS dry-run found no outstanding uploads; local git lfs fsck passed. Repository: https://github.com/Krishna-Inventaur/inventaur-rhino3d-to-solidedge
 
 
 ## Upstream notices
 
 The package includes Tyler Wagler's original SolidEdge-MCP MIT license and attribution, plus the separate .NET MCP server MIT license. Both are verified as archive manifest entries.
+## Documentation-only update — 17 November 2026
+
+The project README, private forum post draft, operator runbook, bootstrap/deployment guide, agent/developer instructions, data contracts, troubleshooting/recovery guides and status records were refreshed. The parent CAD index was checked and its existing canonical workflow entry was retained. This is a documentation update only; no CAD conversion benchmark, runtime payload, installer or release archive was rebuilt. The recorded CAD E2E figures above are unchanged and remain structural/import verification rather than a performance benchmark or visual engineering sign-off.
